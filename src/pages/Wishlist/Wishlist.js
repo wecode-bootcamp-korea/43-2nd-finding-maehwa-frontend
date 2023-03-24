@@ -2,11 +2,7 @@ import React from 'react';
 import AppLayout from '../../styles/AppLayout';
 
 const Wishlist = () => {
-  return (
-    <div className="wishlist">
-      <AppLayout>Wishlist</AppLayout>
-    </div>
-  );
+  return <AppLayout>Wishlist</AppLayout>;
 };
 
 export default Wishlist;

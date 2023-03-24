@@ -1,7 +1,8 @@
 import React from 'react';
+import AppLayout from '../../styles/AppLayout';
 
 const PlaceList = () => {
-  return <div className="placeList">PlaceList</div>;
+  return <AppLayout>PlaceList</AppLayout>;
 };
 
 export default PlaceList;

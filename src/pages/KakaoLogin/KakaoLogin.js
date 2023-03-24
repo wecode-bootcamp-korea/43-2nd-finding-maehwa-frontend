@@ -2,11 +2,7 @@ import React from 'react';
 import AppLayout from '../../styles/AppLayout';
 
 const KakaoLogin = () => {
-  return (
-    <div className="kakaoLogin">
-      <AppLayout>KakaoLogin</AppLayout>
-    </div>
-  );
+  return <AppLayout>KakaoLogin</AppLayout>;
 };
 
 export default KakaoLogin;
