@@ -2,11 +2,7 @@ import React from 'react';
 import AppLayout from '../../styles/AppLayout';
 
 const Main = () => {
-  return (
-    <div className="main">
-      <AppLayout>Main</AppLayout>
-    </div>
-  );
+  return <AppLayout>Main</AppLayout>;
 };
 
 export default Main;

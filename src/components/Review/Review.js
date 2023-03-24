@@ -1,7 +1,8 @@
 import React from 'react';
+import AppLayout from '../../styles/AppLayout';
 
 const Review = () => {
-  return <div className="review">Review</div>;
+  return <AppLayout>Review</AppLayout>;
 };
 
 export default Review;
