@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
+import KakaoLoginAuth from './pages/KakaoLogin/KakaoLoginAuth';
 import Map from './pages/Map/Map';
 import Review from './pages/Review/Review';
 import Library from './pages/Library/Library';
@@ -13,6 +14,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/kakao-login" element={<KakaoLogin />} />
+        <Route path="/oauth/kakao" element={<KakaoLoginAuth />} />
         <Route path="/map" element={<Map />} />
         <Route path="/review" element={<Review />} />
         <Route path="/library" element={<Library />} />

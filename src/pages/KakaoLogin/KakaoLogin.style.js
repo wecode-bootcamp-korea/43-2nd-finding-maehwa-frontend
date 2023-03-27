@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const LoginContainer = styled.div`
   width: 100%;
@@ -21,4 +21,23 @@ export const LookAroundBtn = styled.div`
   font-size: 12px;
   color: white;
   text-align: center;
+`;
+
+export const rotation = keyframes`
+  from { transform: rotate(0deg) };
+  to { transform: rotate(360deg) };
+`;
+
+export const Spinner = styled.div`
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  height: 50px;
+  width: 50px;
+  border: 3px solid #9cd5c2;
+  border-radius: 50%;
+  border-top: none;
+  border-right: none;
+  animation: ${rotation} 1s linear infinite;
 `;
