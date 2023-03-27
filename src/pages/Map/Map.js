@@ -1,8 +1,8 @@
 import React from 'react';
 import AppLayout from '../../styles/AppLayout';
 
-const Main = () => {
-  return <AppLayout>Main</AppLayout>;
+const Map = () => {
+  return <AppLayout>Map</AppLayout>;
 };
 
-export default Main;
+export default Map;
