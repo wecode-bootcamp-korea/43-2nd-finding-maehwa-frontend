@@ -14,7 +14,10 @@ const Library = () => {
               <S.Img src="#" alt="LigbraryListImg" />
               <S.PlaceDateContainer>
                 <S.Place>{title}</S.Place>
-                <S.Date>{date}</S.Date>
+                <S.DateDeleteWrapper>
+                  <S.Date>{date}</S.Date>
+                  <S.StyledDeleteOutlined />
+                </S.DateDeleteWrapper>
               </S.PlaceDateContainer>
             </S.WishlistContainer>
           );
