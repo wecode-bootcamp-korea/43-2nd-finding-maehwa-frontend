@@ -1,8 +1,7 @@
 import React from 'react';
-import AppLayout from '../../styles/AppLayout';
 
 const Library = () => {
-  return <AppLayout>Library</AppLayout>;
+  return <div>Library</div>;
 };
 
 export default Library;

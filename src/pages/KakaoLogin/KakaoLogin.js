@@ -1,8 +1,7 @@
 import React from 'react';
-import AppLayout from '../../styles/AppLayout';
 
 const KakaoLogin = () => {
-  return <AppLayout>KakaoLogin</AppLayout>;
+  return <div>KakaoLogin</div>;
 };
 
 export default KakaoLogin;

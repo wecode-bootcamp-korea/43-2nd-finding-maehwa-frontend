@@ -7,7 +7,7 @@ const AppLayout = ({ children }) => {
 
 export default AppLayout;
 
-let Box = styled.div`
+const Box = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;

@@ -1,8 +1,7 @@
 import React from 'react';
-import AppLayout from '../../styles/AppLayout';
 
 const Modal = () => {
-  return <AppLayout>Modal</AppLayout>;
+  return <div>Modal</div>;
 };
 
 export default Modal;
