@@ -18,9 +18,9 @@ const Router = () => {
         <Route path="/library" element={<Library />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/placelist" element={<PlaceList />} />
+        <Route path="/counter" element={<Counter />} />
         <Route path="*" element={<div>해당 주소는 없는 페이지입니다.</div>} />
         {/* MARK: 아래 Counter 컴포넌트 및 /counter 라우터는 Recoil 예제입니다. */}
-        <Route path="/counter" element={<Counter />} />
       </Routes>
     </BrowserRouter>
   );
