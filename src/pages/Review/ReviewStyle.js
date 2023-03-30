@@ -101,24 +101,18 @@ export const AddressExplain = styled.div`
   color: #8dc7b4;
 `;
 
-// export const ToastContainerStyled = styled(ToastContainer)`
-//   text-align: center;
-//   color: black;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: fixed;
-//   top: 190px;
-// `;
-
 export const PlaceTag = styled.div`
   display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  width: 300px;
 
-  width: 100%;
   padding: 10px 0;
   gap: 5px;
-  margin: 5px 0;
+  overflow: auto;
+  white-space: nowrap;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const ReviewAssess = styled.div`
@@ -238,6 +232,10 @@ export const ManageWrap = styled.div`
   width: 300px;
   margin: 0 auto;
   padding-top: 15px;
+
+  &:nth-child(1) {
+    color: #9cd5c2;
+  }
 `;
 
 export const ManageTitle = styled.div`
@@ -245,6 +243,8 @@ export const ManageTitle = styled.div`
 `;
 
 export const ManageName = styled.div``;
+
+export const ClickMore = styled.div``;
 
 export const InfoMoreContainer = styled.div`
   width: 340px;
@@ -365,8 +365,6 @@ export const ViewReviewAssess = styled.div`
   margin: 8px 0 0 20px;
 `;
 
-// export const StyledHeartTwoTone = styled(StarIcon)``;
-
 export const ReviewBtnContainer = styled.div`
   display: flex;
   margin-left: 20px;
@@ -404,7 +402,7 @@ export const ChosenButton = styled.div`
   background-color: #9cd5c2;
   padding: 6px 12px;
   display: flex;
-  font-size: 14px;
+  font-size: 13px;
 `;
 
 export const MoreButton = styled.div`

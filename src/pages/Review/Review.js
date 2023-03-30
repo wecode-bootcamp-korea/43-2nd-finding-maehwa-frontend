@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { StarFilled, LikeFilled } from '@ant-design/icons';
 import { MoreDetailData } from './MoreDetail';
@@ -12,6 +12,7 @@ const Review = () => {
   const [isOpen, setIsOpen] = useState(() => false);
   const [isHeart, setIsHeart] = useState(true);
   const [isLike, setIsLike] = useState(true);
+  const [detailList, setDetailList] = useState([]);
 
   const handleFillNav = () => {
     setIsHeart(isHeart => !isHeart);
@@ -29,6 +30,11 @@ const Review = () => {
     navigate('/write-review');
   };
 
+  useEffect(() => {
+    fetch('./data/reviewData.json')
+      .then(res => res.json())
+      .then(data => setDetailList(data[0].result.place));
+  }, []);
   return (
     <React.Fragment>
       <S.ReviewNav>
@@ -38,24 +44,34 @@ const Review = () => {
         <S.ReviewMap src="/images/reviewmap.png" alt="map" />
         <S.ReviewTitleWrap>
           <S.TitleWrap>
-            <S.ReviewTitle>청담동 코코건물 1층</S.ReviewTitle>
+            <S.ReviewTitle>{detailList[0]?.name}</S.ReviewTitle>
             <S.ShareAltOutlinedStyled />
           </S.TitleWrap>
 
           {isOpen && <ImgModal setIsOpen={setIsOpen} />}
           <S.CopyAddress>
-            <S.TitleAddress>강남구 도산대로 451</S.TitleAddress>
+            <S.TitleAddress>{detailList[0]?.address}</S.TitleAddress>
             <S.CopyOutlinedStyled />
           </S.CopyAddress>
 
-          <S.AddressExplain>올리브영을 찾아보세요!</S.AddressExplain>
-          <S.ReviewAssess>★ 4.5 &nbsp;&nbsp;리뷰 3개</S.ReviewAssess>
+          <S.AddressExplain>{detailList[0]?.description}</S.AddressExplain>
+          <S.ReviewAssess>
+            ★ {Number(detailList[0]?.avgRating).toFixed(2)} &nbsp;&nbsp;리뷰{' '}
+            {detailList[0]?.countReview}개
+          </S.ReviewAssess>
 
           <S.PlaceTag>
-            <S.ChosenButton type="button">휴지가 많은</S.ChosenButton>
-            <S.ChosenButton type="button">24시 개방👀</S.ChosenButton>
-            <S.ChosenButton type="button">향기로운</S.ChosenButton>
-            <S.MoreButton type="button">∙∙∙</S.MoreButton>
+            {detailList.map(info => (
+              <React.Fragment key={info.id}>
+                {info.mostLikedTags.map(item => (
+                  <React.Fragment key={item.id}>
+                    <S.ChosenButton type="button">
+                      {item.tagName}
+                    </S.ChosenButton>
+                  </React.Fragment>
+                ))}
+              </React.Fragment>
+            ))}
           </S.PlaceTag>
         </S.ReviewTitleWrap>
 
@@ -77,30 +93,28 @@ const Review = () => {
           </S.ToiletImgList>
           <S.ReviewInfoTitle>기본 정보</S.ReviewInfoTitle>
           <S.InfoContainer>
-            <S.OpenTimeWrap>
-              <S.OpenTimeTitle>개방시간</S.OpenTimeTitle>
-              <S.OpenTime>09:00 ~ 18:00</S.OpenTime>
-            </S.OpenTimeWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>관리기관</S.ManageTitle>
-              <S.ManageName>현대백화점 관리센터</S.ManageName>
-            </S.ManageWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>전화번호</S.ManageTitle>
-              <S.ManageName>0123-3333</S.ManageName>
-            </S.ManageWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>남녀공용 유무</S.ManageTitle>
-              <S.ManageName>남녀 분리</S.ManageName>
-            </S.ManageWrap>
+            {detailList.map(info => {
+              return (
+                <React.Fragment key={info.id}>
+                  {info.basicInformation.map(item => (
+                    <React.Fragment key={item.id}>
+                      <S.ManageWrap>
+                        <S.ManageTitle>{item.title} </S.ManageTitle>
+                        <S.ManageName>{item.content} </S.ManageName>
+                      </S.ManageWrap>
+                    </React.Fragment>
+                  ))}
+                </React.Fragment>
+              );
+            })}
             <S.ManageWrap>
               <S.ManageTitle>상세정보 더보기</S.ManageTitle>
-              <S.ManageName onClick={handleOpenMore}>
+
+              <S.ClickMore onClick={handleOpenMore}>
                 {isMoreOpen ? '▲' : '▼'}
-              </S.ManageName>
+              </S.ClickMore>
             </S.ManageWrap>
           </S.InfoContainer>
-
           {isMoreOpen && (
             <S.InfoMoreContainer>
               {MoreDetailData.map(({ id, title, female, male }) => (
@@ -121,7 +135,9 @@ const Review = () => {
           )}
           <S.InfoMoreDate>마지막 업데이트 날짜 : 23.01.23</S.InfoMoreDate>
           <S.ViewReview>
-            <S.ViewReviewNumber>리뷰 3개</S.ViewReviewNumber>
+            <S.ViewReviewNumber>
+              리뷰 {detailList[0]?.countReview}개
+            </S.ViewReviewNumber>
             <S.ViewReviewWrap>
               <S.ViewReviewDate>2023.03.12</S.ViewReviewDate>
               <S.ViewReviewName>♀ 👩🏻</S.ViewReviewName>

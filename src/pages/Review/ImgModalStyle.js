@@ -10,6 +10,7 @@ export const ListContainer = styled.div`
   border-radius: 20px;
   background-color: transparent;
   display: flex;
+  background-color: white;
   justify-content: center;
   z-index: 1;
   position: fixed;

@@ -6,7 +6,7 @@ const ImgModal = ({ setIsOpen }) => {
   const slideRef = useRef(null);
 
   useEffect(() => {
-    slideRef.current.style.transform = `translateX(${-300 * curSlide}px)`;
+    slideRef.current.style.transform = `translateX(${-340 * curSlide}px)`;
   }, [curSlide]);
 
   const movePrev = () => {
