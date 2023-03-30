@@ -38,6 +38,13 @@ const variables = {
     left: 50%;
     transform: translate(-50%, -50%);
   `,
+
+  preventDrag: css`
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  `,
 };
 
 export default variables;
