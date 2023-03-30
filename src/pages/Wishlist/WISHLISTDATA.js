@@ -1,15 +1,16 @@
 const WISHLISTDATA = [
   {
     id: 1,
-    src: '#',
+    src: '/images/hobbangman.jpeg',
     place: '현대백화점 무역센터점',
     rating: 4.93,
     review: 3,
     errMsg: 'NoImg',
   },
+
   {
     id: 2,
-    src: '#',
+    src: '/images/loopy.png',
     place: '변소',
     rating: 5.2,
     review: 5,
@@ -17,7 +18,7 @@ const WISHLISTDATA = [
   },
   {
     id: 3,
-    src: '#',
+    src: '/images/IMG_8410.jpeg',
     place: '변소2',
     rating: 3.2,
     review: 10,

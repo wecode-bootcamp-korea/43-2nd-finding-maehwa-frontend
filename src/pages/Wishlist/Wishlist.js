@@ -1,4 +1,5 @@
 import React from 'react';
+import HeartComponent from '../../components/Wishlist/HeartComponent';
 import WISHLISTDATA from './WISHLISTDATA';
 import * as S from './Wishlist.style';
 import {
@@ -23,8 +24,10 @@ const Wishlist = () => {
           return (
             <React.Fragment key={id}>
               <S.ImgHeartWrapper>
-                <S.Img src={src} />
-                <S.StyledHeartTwoTone />
+                <S.Img src={src} alt={errMsg} />
+                <HeartComponent
+                  data={{ id, src, place, review, errMsg, rating }}
+                />
               </S.ImgHeartWrapper>
               <S.DetailReviewPlaceContain>
                 <S.Place style={{ fontWeight: '700' }}>{place}</S.Place>
