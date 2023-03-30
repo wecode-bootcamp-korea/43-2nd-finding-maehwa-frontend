@@ -1,32 +1,25 @@
 import styled from 'styled-components';
-import { HeartOutlined, LeftOutlined, LikeOutlined } from '@ant-design/icons';
+import { LeftOutlined, LikeOutlined } from '@ant-design/icons';
 import { Button, Rate } from 'antd';
 import variables from '../../styles/variables';
 
-// export const RateStyled = () => (
-//   <svg
-//     viewBox="64 64 896 896"
-//     focusable="false"
-//     data-icon="star"
-//     width="2em"
-//     height="1em"
-//     fill="#9CD5C2"
-//     aria-hidden="true"
-//   >
-//     <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
-//   </svg>
-// );
+// export const ReviewWrap = styled.div`
+//   overflow: scroll;
+//   ::-webkit-scrollbar {
+//     display: none;
+//   }
+// `;
 
-// const StarIcon = props => <Icon component={RateStyled} {...props} />;
-
-export const ReviewNav = styled.div`
+export const ReviewBack = styled.div`
   background-color: white;
-  height: 60px;
+  height: 63px;
   width: 100%;
   display: flex;
   position: absolute;
   top: 0;
 `;
+
+export const LeftOutlinedStyled = styled(LeftOutlined)``;
 
 export const ReviewMap = styled.img`
   position: absolute;
@@ -151,8 +144,7 @@ export const InfoRequest = styled.div`
   font-size: 11px;
   color: gray;
   text-decoration: underline;
-  margin-top: 85px;
-  margin-left: 300px;
+  margin: 85px 0 10px 300px;
   :hover {
     cursor: pointer;
   }
@@ -201,20 +193,17 @@ export const ManageName = styled.div``;
 
 export const InfoMoreContainer = styled.div`
   width: 340px;
+  height: 200px;
   border-radius: 10px;
   background-color: white;
   margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 5px;
 `;
 
 export const MoreContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 300px;
-  margin: 0 auto;
-  padding-top: 5px;
-  /* gap 어떻게 쓰나요ㅜㅜ */
+  justify-content: center;
 `;
 
 //모달바
@@ -230,16 +219,17 @@ export const ListContainer = styled.div`
 
 export const ListThumbnailTitle = styled.h2`
   ${variables.flex('row', 'center', 'center')}
-  height: 100%;
+  /* height: 100%; */
   font-size: 20px;
   font-weight: 700;
   color: #9cd5c2;
+  margin-top: 15px;
 `;
 
 export const InfoMoreDate = styled.div`
   font-size: 11px;
   color: gray;
-  margin-left: 220px;
+  margin: 10px 0 0 220px;
 `;
 export const ViewReview = styled.div``;
 
@@ -248,12 +238,12 @@ export const ViewReviewNumber = styled.div`
 `;
 export const ViewReviewWrap = styled.div`
   width: 340px;
-
+  height: 155px;
   border-radius: 10px;
   background-color: white;
   margin: 0 auto;
   margin-top: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 `;
 
 export const ViewReviewDate = styled.div`
@@ -261,6 +251,28 @@ export const ViewReviewDate = styled.div`
   color: gray;
   margin-left: 280px;
   padding-top: 7px;
+`;
+export const UserInfo = styled.div`
+  width: 340px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ModifyInfo = styled.div`
+  display: flex;
+  margin-right: 10px;
+`;
+export const ModifyReview = styled.div`
+  font-size: 13px;
+  color: #ccc;
+`;
+export const DeleteReview = styled.div`
+  font-size: 13px;
+  color: #ccc;
+  margin-left: 5px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ViewReviewName = styled.div`
@@ -272,13 +284,11 @@ export const ViewReviewAssess = styled.div`
   margin: 8px 0 0 20px;
 `;
 
-// export const StyledHeartTwoTone = styled(StarIcon)``;
-
 export const ReviewBtnContainer = styled.div`
   display: flex;
   margin-left: 20px;
   width: 100%;
-  padding: 5px 0;
+  padding: 10px 0;
   gap: 5px;
 
   .ant-btn-default:hover {
@@ -311,7 +321,7 @@ export const ViewReviewMent = styled.div`
 
 export const LikeReview = styled.div`
   margin-left: 285px;
-  padding: 8px 0;
+  padding-bottom: 8px;
   display: flex;
 `;
 export const StyledLikeOutlined = styled(LikeOutlined)``;
@@ -324,7 +334,6 @@ export const LikeReviewNumber = styled.div`
 export const ReviewAssessStar = styled.div`
   display: flex;
   justify-content: center;
-  padding: 10px 0;
 `;
 
 export const RateStyled = styled(Rate)`
@@ -338,12 +347,12 @@ export const UploadReviewComment = styled.form`
 `;
 
 export const WriteReviewComment = styled.textarea`
-  width: 320px;
+  width: 340px;
   height: 100px;
   border: solid 1px lightgray;
   margin-bottom: 10px;
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
   border-radius: 10px;
   overflow: scroll;
 
@@ -364,7 +373,6 @@ export const UploadReview = styled.button`
   padding: 5px 0 0 13px;
   background-color: #9cd5c2;
   opacity: 0.8;
-
   border: none;
 
   :hover {
@@ -372,7 +380,20 @@ export const UploadReview = styled.button`
   }
 `;
 
-export const Nav = styled.div`
+export const WriteReviewWrap = styled.div`
+  width: 340px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+`;
+
+export const Click = styled.div`
+  width: 300px;
+  height: 10px;
+`;
+export const ReviewNav = styled.nav`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -385,52 +406,37 @@ export const Nav = styled.div`
   align-items: center;
 `;
 
-export const HeartOutlinedStyled = styled(HeartOutlined)`
-  margin: 0 -80px;
-`;
-
-export const LeftOutlinedStyled = styled(LeftOutlined)`
-  font-size: 25px;
-  margin-left: 15px;
-  line-height: 75px;
-  :hover {
-    cursor: pointer;
-  }
-`;
-
 // export const Aaa = styled(HeartOutlined)`
 //   color: ${({ color }) => color};
 // `;
 
-export const StyledTable = styled.div`
-  /* padding: 5px; */
-  background: #fff;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
+export const StyledTable = styled.div``;
 
-export const StyledTableRow = styled.div`
+export const StyledTr = styled.tr`
   display: flex;
-  flex-wrap: wrap;
+  border-collapse: separate;
+  /* flex-wrap: wrap; */
+  font-weight: 400;
+  font-size: 13px;
 `;
 
 export const StyledTh = styled.div`
   display: flex;
   align-items: center;
-  flex: 0 0 10rem;
   width: 10rem;
-  color: ${({ theme }) => theme.gray};
-  background: #c3c7d926;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  /* color: ${({ theme }) => theme.gray}; */
   font-weight: 600;
-  padding: 1rem;
-  word-break: keep-all;
+  padding: 5px;
+  /* word-break: keep-all; */
 `;
 
 export const StyledTd = styled.div`
   display: flex;
+  border-bottom: 1px solid;
+
   align-items: center;
-  padding: 1rem;
-  flex: 1;
-  word-break: keep-all;
+  padding: 0 10px;
+  /* word-break: keep-all; */
 `;

@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Button, Rate } from 'antd';
+import { Button } from 'antd';
 import {
-  SearchOutlined,
-  UserOutlined,
   HeartOutlined,
   ShareAltOutlined,
   HeartFilled,
@@ -18,15 +16,18 @@ const Review = () => {
   const [isHeart, setIsHeart] = useState(true);
   const [isLike, setIsLike] = useState(true);
   //리뷰
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState(''); //입력값 저장
   const [saveComment, setSaveComment] = useState([]);
   const [numberComments, setNumberComments] = useState(0);
+  // const [numberlike, setNumberLike] = useState(0);
+  //스크롤창
+  const [isOpenList, setIsOpenList] = useState(true);
   const listContainer = useRef(null);
-  const [inputValue, setInputValue] = useState({
-    Nickname: '',
-    reviewComment: '',
-  });
-  const { Nickname, reviewComment } = inputValue;
+  // const [inputValue, setInputValue] = useState({
+  //   Nickname: '',
+  //   reviewComment: '',
+  // });
+  // const { Nickname, reviewComment } = inputValue;
 
   const handleHeartFill = () => {
     setIsHeart(isHeart => !isHeart);
@@ -39,7 +40,17 @@ const Review = () => {
     setIsMoreOpen(!isMoreOpen);
   };
   const dragListContainer = () => {
-    listContainer.current.style = 'height: 100%;';
+    setIsOpenList(!isOpenList);
+    if (isOpenList) {
+      listContainer.current.style = 'height: 30%;';
+      listContainer.current.style.transition = 'all 0.3s ease-in-out';
+    } else {
+      removeList();
+    }
+  };
+  const removeList = () => {
+    setIsOpenList(!isOpenList);
+    listContainer.current.style = 'height: 10%;';
     listContainer.current.style.transition = 'all 0.3s ease-in-out';
   };
   //리뷰쓰기
@@ -47,30 +58,60 @@ const Review = () => {
     setComment(e.target.value);
   };
 
-  const commitCreate = e => {
-    return e.key === 'Enter' && comment.length > 3
-      ? (commentInformation(), setComment(''))
-      : '';
-  };
-
-  const postButton = () => {
-    return comment.length > 3 ? (commentInformation(), setComment('')) : '';
-  };
-
-  const commentInformation = () => {
+  const commentInfo = () => {
     const input = {
-      id: 'id',
+      id: random(),
       value: comment,
+      up: false,
     };
     setSaveComment([...saveComment, input]);
     setNumberComments(numberComments + 1);
   };
 
+  const random = () => {
+    return Math.random().toString(36).substr(2, 16);
+  };
+
+  const handleSubmitBtn = () => {
+    commentInfo();
+    setComment('');
+  };
+
+  const commitCreate = e => {
+    return e.key === 'Enter' && comment.length > 3
+      ? handleSubmitBtn() && removeList()
+      : '';
+  };
+  // const commitCreate = e => {
+  //   if (e.key === 'Enter' && 300 > comment.length > 3) {
+  //     commentInfo(), setComment('');
+  //   } else {
+  //     alert('ede');
+  //   }
+  // };
+
+  const postButton = () => {
+    return comment.length > 3
+      ? (commentInfo(), setComment('')) && removeList()
+      : '';
+  };
+
+  // const likeToggle = item => {
+  //   saveComment.filter(items => {
+  //     return items.id === item.id && !item.up
+  //       ? ((item.up = !item.up), setNumberLike(numberlike + 1))
+  //       : items.id === item.id && item.up
+  //       ? ((item.up = !item.up), setNumberLike(numberlike - 1))
+  //       : item;
+  //   });
+  // };
+  //다른걸로 해보자 ...
+
   return (
     <React.Fragment>
-      <S.ReviewNav>
+      <S.ReviewBack>
         <S.LeftOutlinedStyled />
-      </S.ReviewNav>
+      </S.ReviewBack>
       <S.ReviewMap src="/images/reviewmap.png" alt="map" />
       <S.ReviewTitleWrap>
         <S.ReviewTitle>청담동 코코건물 1층</S.ReviewTitle>
@@ -130,14 +171,14 @@ const Review = () => {
 
         {isMoreOpen && (
           <S.InfoMoreContainer>
-            {MoreDetailData.map(({ id, title, YorN }) => (
+            {MoreDetailData.map(({ id, title, female, male }) => (
               <S.MoreContainer key={id}>
                 <S.StyledTable>
-                  <S.StyledTableRow>
+                  <S.StyledTr>
                     <S.StyledTh>{title}</S.StyledTh>
-                    <S.StyledTd>{YorN}</S.StyledTd>
-                    <S.StyledTd>{YorN}</S.StyledTd>
-                  </S.StyledTableRow>
+                    <S.StyledTd>{female}</S.StyledTd>
+                    <S.StyledTd>{male}</S.StyledTd>
+                  </S.StyledTr>
                 </S.StyledTable>
               </S.MoreContainer>
             ))}
@@ -178,10 +219,33 @@ const Review = () => {
               <S.LikeReviewNumber>30</S.LikeReviewNumber>
             </S.LikeReview>
           </S.ViewReviewWrap>
+          {/* Comment Component */}
+          {saveComment.map(item => (
+            <S.ViewReviewWrap key={item.id}>
+              <Comment
+                item={item}
+                key={item.id}
+                saveComment={saveComment}
+                setSaveComment={setSaveComment}
+                numberComments={numberComments}
+                setNumberComments={setNumberComments}
+              />
+            </S.ViewReviewWrap>
+          ))}
           {/* 리뷰쓰기모달 */}
-          <S.ViewReviewWrap>
+        </S.ViewReview>
+      </S.SubTitleWrap>
+      <S.ListContainer ref={listContainer}>
+        {isOpenList ? (
+          <S.WriteReviewWrap>
+            <S.Click onClick={dragListContainer} />
+            <S.ListThumbnailTitle>Review</S.ListThumbnailTitle>
+          </S.WriteReviewWrap>
+        ) : (
+          <S.WriteReviewWrap>
+            <S.Click onClick={dragListContainer} />
             <S.ReviewAssessStar>
-              <S.RateStyled allowHalf defaultValue={2.5} />
+              <S.RateStyled allowHalf defaultValue={5} />
             </S.ReviewAssessStar>
             <S.ReviewBtnContainer>
               <S.StyledButton type="default" shape="round" color="lightgray">
@@ -193,9 +257,6 @@ const Review = () => {
               <S.ChosenButton type="button">휴지가 많은</S.ChosenButton>
             </S.ReviewBtnContainer>
             <S.UploadReviewComment>
-              {saveComment.map(item => (
-                <Comment item={item} key={item.id} saveComment={saveComment} />
-              ))}
               <S.WriteReviewComment
                 type="text"
                 placeholder="리뷰를 남겨주세요"
@@ -203,21 +264,14 @@ const Review = () => {
                 onChange={changeComment}
                 onKeyPress={commitCreate}
               />
-              <S.UploadReview onClick={postButton}>게시</S.UploadReview>
+              <S.UploadReview onClick={postButton} type="button">
+                게시
+              </S.UploadReview>
             </S.UploadReviewComment>
-          </S.ViewReviewWrap>
-        </S.ViewReview>
-      </S.SubTitleWrap>
-      <S.ListContainer onClick={dragListContainer} ref={listContainer}>
-        <S.ListThumbnailTitle>Review</S.ListThumbnailTitle>
+          </S.WriteReviewWrap>
+        )}
       </S.ListContainer>
-      <S.Nav>
-        <SearchOutlined style={{ fontSize: '30px', color: '#9CD5C2' }} />
-        <S.HeartOutlinedStyled
-          style={{ fontSize: '30px', color: 'lightgray' }}
-        />
-        <UserOutlined style={{ fontSize: '30px', color: 'lightgray' }} />
-      </S.Nav>
+      <S.ReviewNav>리뷰쓰기</S.ReviewNav>
     </React.Fragment>
   );
 };
