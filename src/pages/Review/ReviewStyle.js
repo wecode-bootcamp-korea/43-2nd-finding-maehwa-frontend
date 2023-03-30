@@ -1,79 +1,131 @@
 import styled from 'styled-components';
-import { HeartOutlined, LeftOutlined, LikeOutlined } from '@ant-design/icons';
+import {
+  HeartOutlined,
+  HeartFilled,
+  LeftOutlined,
+  LikeOutlined,
+  CopyOutlined,
+  ShareAltOutlined,
+} from '@ant-design/icons';
 import { Button, Rate } from 'antd';
+
 import variables from '../../styles/variables';
-
-// export const RateStyled = () => (
-//   <svg
-//     viewBox="64 64 896 896"
-//     focusable="false"
-//     data-icon="star"
-//     width="2em"
-//     height="1em"
-//     fill="#9CD5C2"
-//     aria-hidden="true"
-//   >
-//     <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
-//   </svg>
-// );
-
-// const StarIcon = props => <Icon component={RateStyled} {...props} />;
 
 export const ReviewNav = styled.div`
   background-color: white;
   height: 60px;
   width: 100%;
-  display: flex;
-  position: absolute;
+  /* display: flex;
+  position: absolute; */
   top: 0;
 `;
 
+export const Scroll = styled.div`
+  overflow: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const LeftOutlinedStyled = styled(LeftOutlined)`
+  font-size: 25px;
+  margin-left: 15px;
+  line-height: 75px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export const ReviewMap = styled.img`
-  position: absolute;
+  /* position: absolute; */
   width: 390px;
   height: 250px;
   object-fit: cover;
-  margin-top: 60px;
 `;
 
 export const ReviewTitleWrap = styled.div`
+  position: relative;
   width: 350px;
   height: 180px;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background-color: white;
-  margin-top: 240px;
-  z-index: 1;
+  margin: -70px 0 0 20px;
+`;
+
+export const TitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ReviewTitle = styled.div`
   font-size: 22px;
   font-weight: 700;
-  display: flex;
-  justify-content: center;
+
   margin-top: 25px;
 `;
 
-export const TitleAddress = styled.div`
-  font-size: 13px;
+export const ShareAltOutlinedStyled = styled(ShareAltOutlined)`
+  margin: 20px 0 0 7px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const CopyAddress = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-top: 10px;
+`;
+
+export const TitleAddress = styled.div`
+  font-size: 14px;
+`;
+
+export const CopyOutlinedStyled = styled(CopyOutlined)`
+  font-size: 14px;
+  margin: 0 0 4px 7px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const AddressExplain = styled.div`
   font-size: 12px;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  color: gray;
+  margin: 3px 0 15px 0;
+  color: #8dc7b4;
+`;
+
+// export const ToastContainerStyled = styled(ToastContainer)`
+//   text-align: center;
+//   color: black;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: fixed;
+//   top: 190px;
+// `;
+
+export const PlaceTag = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  padding: 10px 0;
+  gap: 5px;
+  margin: 5px 0;
 `;
 
 export const ReviewAssess = styled.div`
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 5px;
 `;
 
 export const ShareAndLike = styled.div`
@@ -106,18 +158,10 @@ export const LikePlace = styled.div`
 
 export const SubTitleWrap = styled.div`
   background: #f1f1f1;
-  width: 390px;
-  height: 500px;
-  position: absolute;
-  bottom: 0;
-  overflow: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const ToiletImgList = styled.div`
-  margin-left: 25px;
+  margin: 10px 0 0 25px;
   width: 340px;
 `;
 
@@ -143,6 +187,8 @@ export const ToiletDetailImg = styled.img`
   }
 `;
 
+export const ModalStyled = styled.div``;
+
 export const ReviewInfoTitle = styled.div`
   margin: 10px 0 0 25px;
 `;
@@ -151,8 +197,9 @@ export const InfoRequest = styled.div`
   font-size: 11px;
   color: gray;
   text-decoration: underline;
-  margin-top: 85px;
+  margin-top: -80px;
   margin-left: 300px;
+  padding-top: 85px;
   :hover {
     cursor: pointer;
   }
@@ -206,15 +253,60 @@ export const InfoMoreContainer = styled.div`
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 5px;
+  padding: 10px 0;
 `;
 
-export const MoreContainer = styled.div`
+export const Table = styled.table`
   display: flex;
-  justify-content: space-between;
   width: 300px;
-  margin: 0 auto;
-  padding-top: 5px;
-  /* gap 어떻게 쓰나요ㅜㅜ */
+  margin-left: 50px;
+`;
+export const Thead = styled.thead``;
+export const Tr = styled.tr`
+  display: flex;
+  border-collapse: separate;
+  /* flex-wrap: wrap; */
+  font-weight: 400;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+  width: 140px;
+`;
+export const StyledTr = styled.tr`
+  display: flex;
+  /* flex-wrap: wrap; */
+  font-weight: 400;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+  width: 100px;
+`;
+
+export const StyledTh = styled.div`
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  font-weight: 600;
+  padding: 5px;
+  word-break: keep-all;
+  text-align: left;
+  border-right: 1px solid #ccc;
+`;
+
+export const StyledTd = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  width: 50px;
+  /* word-break: keep-all; */
+`;
+export const StyledTdOne = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  width: 50px;
+  border-right: 1px solid #ccc;
+  /* word-break: keep-all; */
 `;
 
 //모달바
@@ -225,7 +317,7 @@ export const ListContainer = styled.div`
   border-radius: 20px 20px 0 0;
   background-color: white;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  /* z-index: 1; */
 `;
 
 export const ListThumbnailTitle = styled.h2`
@@ -246,6 +338,7 @@ export const ViewReview = styled.div``;
 export const ViewReviewNumber = styled.div`
   margin: 10px 0 0 25px;
 `;
+
 export const ViewReviewWrap = styled.div`
   width: 340px;
 
@@ -253,7 +346,7 @@ export const ViewReviewWrap = styled.div`
   background-color: white;
   margin: 0 auto;
   margin-top: 10px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 `;
 
 export const ViewReviewDate = styled.div`
@@ -294,14 +387,38 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const ChosenButton = styled.div`
+export const ChosenButtonStyled = styled.div`
   border: 1px solid #9cd5c2;
-  border-radius: 20px;
   color: #9cd5c2;
-  padding: 0 10px;
+  border-radius: 20px;
+  padding: 6px 12px;
   display: flex;
   align-items: center;
   font-size: 14px;
+`;
+
+export const ChosenButton = styled.div`
+  border: 1px solid #9cd5c2;
+  border-radius: 20px;
+  color: white;
+  background-color: #9cd5c2;
+  padding: 6px 12px;
+  display: flex;
+  font-size: 14px;
+`;
+
+export const MoreButton = styled.div`
+  border: 1px solid #9cd5c2;
+  border-radius: 20px;
+  color: white;
+  background-color: #9cd5c2;
+  padding: 6px 3px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ViewReviewMent = styled.div`
@@ -376,23 +493,42 @@ export const Nav = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 80px;
-
+  height: 60px;
   background-color: white;
-  border-top: 1px solid #f1f1f1;
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
 
-export const HeartOutlinedStyled = styled(HeartOutlined)`
-  margin: 0 -80px;
+export const LikeNav = styled.div`
+  display: flex;
+  align-items: center;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
-export const LeftOutlinedStyled = styled(LeftOutlined)`
-  font-size: 25px;
-  margin-left: 15px;
-  line-height: 75px;
+export const HeartOutlinedStyled = styled(HeartOutlined)`
+  color: #9cd5c2;
+  font-size: 20px;
+`;
+
+export const HeartFilledNav = styled(HeartFilled)`
+  color: #9cd5c2;
+  font-size: 20px;
+`;
+
+export const LikeNavButton = styled.div`
+  margin: 3px 0 0 10px;
+  color: #9cd5c2;
+`;
+
+export const OpenWriteReview = styled.button`
+  width: 150px;
+  border-radius: 20px;
+  height: 35px;
+  background-color: #9cd5c2;
+  border: none;
   :hover {
     cursor: pointer;
   }
@@ -401,36 +537,3 @@ export const LeftOutlinedStyled = styled(LeftOutlined)`
 // export const Aaa = styled(HeartOutlined)`
 //   color: ${({ color }) => color};
 // `;
-
-export const StyledTable = styled.div`
-  /* padding: 5px; */
-  background: #fff;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const StyledTableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const StyledTh = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 0 0 10rem;
-  width: 10rem;
-  color: ${({ theme }) => theme.gray};
-  background: #c3c7d926;
-  font-weight: 600;
-  padding: 1rem;
-  word-break: keep-all;
-`;
-
-export const StyledTd = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  flex: 1;
-  word-break: keep-all;
-`;
