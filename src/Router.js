@@ -3,12 +3,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import KakaoLogin from './pages/KakaoLogin/KakaoLogin';
 import KakaoLoginAuth from './pages/KakaoLogin/KakaoLoginAuth';
 import Map from './pages/Map/Map';
-import Review from './pages/Review/Review';
+// import Review from './pages/Review/Review';
+import WriteReview from './pages/Review/WriteReview';
 import Library from './pages/Library/Library';
 import Wishlist from './pages/Wishlist/Wishlist';
 import PlaceList from './components/PlaceList/PlaceList';
 import Counter from './pages/Counter';
 import App from './components/Modal/App';
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -16,7 +18,8 @@ const Router = () => {
         <Route path="/kakao-login" element={<KakaoLogin />} />
         <Route path="/oauth/kakao" element={<KakaoLoginAuth />} />
         <Route path="/map" element={<Map />} />
-        <Route path="/review" element={<Review />} />
+        {/* <Route path="/review" element={<Review />} /> */}
+        <Route path="/write-review" element={<WriteReview />} />
         <Route path="/library" element={<Library />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/placelist" element={<PlaceList />} />
