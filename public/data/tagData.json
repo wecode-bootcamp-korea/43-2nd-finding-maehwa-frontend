@@ -1,0 +1,27 @@
+[
+  {
+    "tagId": 1,
+    "tagName": "휴지 많음 🧻",
+    "isChecked": false
+  },
+  {
+    "tagId": 2,
+    "tagName": "휴지 보통 🧻",
+    "isChecked": false
+  },
+  {
+    "tagId": 3,
+    "tagName": "휴지 적음 🧻",
+    "isChecked": false
+  },
+  {
+    "tagId": 4,
+    "tagName": "향기로운 🎀",
+    "isChecked": false
+  },
+  { "tagId": 5, "tagName": "찾기 쉬운 👀", "isChecked": false },
+  { "tagId": 6, "tagName": "깨끗한✨", "isChecked": false },
+  { "tagId": 7, "tagName": "음악이 나오는 🎵", "isChecked": false },
+  { "tagId": 8, "tagName": "인테리어가 좋은 🖼", "isChecked": false },
+  { "tagId": 9, "tagName": "콘센트가 있는 🐽", "isChecked": false }
+]
