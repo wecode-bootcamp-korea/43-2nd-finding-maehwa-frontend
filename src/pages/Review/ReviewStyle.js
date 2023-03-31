@@ -168,6 +168,69 @@ export const InfoContainer = styled.div`
   margin-bottom: 5px;
 `;
 
+export const InfoMoreContainer = styled.div`
+  width: 340px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px 0;
+`;
+
+export const Table = styled.table`
+  display: flex;
+  width: 300px;
+  margin-left: 50px;
+`;
+export const Thead = styled.thead``;
+export const Tr = styled.tr`
+  display: flex;
+  border-collapse: separate;
+  /* flex-wrap: wrap; */
+  font-weight: 400;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+  width: 140px;
+`;
+export const StyledTr = styled.tr`
+  display: flex;
+  /* flex-wrap: wrap; */
+  font-weight: 400;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+  width: 100px;
+`;
+
+export const StyledTh = styled.div`
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  font-weight: 600;
+  padding: 5px;
+  word-break: keep-all;
+  text-align: left;
+  border-right: 1px solid #ccc;
+`;
+
+export const StyledTd = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  width: 50px;
+  /* word-break: keep-all; */
+`;
+export const StyledTdOne = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  width: 50px;
+  border-right: 1px solid #ccc;
+  /* word-break: keep-all; */
+`;
+
 export const OpenTimeWrap = styled.div`
   display: flex;
   justify-content: space-between;
@@ -198,15 +261,6 @@ export const ManageTitle = styled.div`
 `;
 
 export const ManageName = styled.div``;
-
-export const InfoMoreContainer = styled.div`
-  width: 340px;
-  border-radius: 10px;
-  background-color: white;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 5px;
-`;
 
 export const MoreContainer = styled.div`
   display: flex;
@@ -401,36 +455,3 @@ export const LeftOutlinedStyled = styled(LeftOutlined)`
 // export const Aaa = styled(HeartOutlined)`
 //   color: ${({ color }) => color};
 // `;
-
-export const StyledTable = styled.div`
-  /* padding: 5px; */
-  background: #fff;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const StyledTableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-export const StyledTh = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 0 0 10rem;
-  width: 10rem;
-  color: ${({ theme }) => theme.gray};
-  background: #c3c7d926;
-  font-weight: 600;
-  padding: 1rem;
-  word-break: keep-all;
-`;
-
-export const StyledTd = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  flex: 1;
-  word-break: keep-all;
-`;

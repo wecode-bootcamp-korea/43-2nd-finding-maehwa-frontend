@@ -130,16 +130,19 @@ const Review = () => {
 
         {isMoreOpen && (
           <S.InfoMoreContainer>
-            {MoreDetailData.map(({ id, title, YorN }) => (
-              <S.MoreContainer key={id}>
-                <S.StyledTable>
-                  <S.StyledTableRow>
+            {MoreDetailData.map(({ id, title, female, male }) => (
+              <S.Table key={id}>
+                <S.Thead>
+                  <S.Tr>
                     <S.StyledTh>{title}</S.StyledTh>
-                    <S.StyledTd>{YorN}</S.StyledTd>
-                    <S.StyledTd>{YorN}</S.StyledTd>
-                  </S.StyledTableRow>
-                </S.StyledTable>
-              </S.MoreContainer>
+                  </S.Tr>
+                </S.Thead>
+
+                <S.StyledTr>
+                  <S.StyledTdOne>{female}</S.StyledTdOne>
+                  <S.StyledTd>{male}</S.StyledTd>
+                </S.StyledTr>
+              </S.Table>
             ))}
           </S.InfoMoreContainer>
         )}
