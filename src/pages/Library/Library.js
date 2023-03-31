@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import LibraryList from './LibraryList';
 import { SearchOutlined, HeartOutlined, UserOutlined } from '@ant-design/icons';
 import * as S from './Library.style';
+import { Link } from 'react-router-dom';
 
 const Library = () => {
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
+    //변수 저장
     localStorage.setItem(
       'token',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjgwMTc3MTc2LCJleHAiOjE2ODAyNjM1NzZ9.vJsCvd05-H7ED4InxYIVZYw3IabnzJMzdr60zCs_Ssk'
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjgwMjI4OTM1LCJleHAiOjE2ODAzMTUzMzV9.Jyf00tYNmGTYB-GWpIlARxHdU6-7hEcHhZlVWH3y3Es'
     );
+    //변수 저장 후 사용
     const getToken = localStorage.getItem('token');
-    console.log(getToken);
 
     fetch('http://10.58.52.144:3001/users/libraries', {
       method: 'GET',
@@ -24,23 +26,28 @@ const Library = () => {
       .then(res => res.json())
       .then(data => {
         setDataList(data.data);
-        console.log(dataList);
       });
   }, []);
+
+  //fetch('api주소')
+  //.then(res => res.json())
+  //.then(res => )
 
   return (
     <React.Fragment>
       <S.Title>위시리스트</S.Title>
       <S.WishlistWrapper>
-        {dataList.map(info => {
+        {dataList.map(({ id, name, created_at }) => {
           return (
-            <S.WishlistContainer key={info.id}>
-              <S.Img src="#" alt="LigbraryListImg" />
-              <S.PlaceDateContainer>
-                <S.Place>{info.name}</S.Place>
-                <S.Date>{info.created_at}</S.Date>
-              </S.PlaceDateContainer>
-            </S.WishlistContainer>
+            <Link key={id} to={`/wishlist/${id}`}>
+              <S.WishlistContainer>
+                <S.Img src="#" alt="LigbraryListImg" />
+                <S.PlaceDateContainer>
+                  <S.Place>{name}</S.Place>
+                  <S.Date>{created_at}</S.Date>
+                </S.PlaceDateContainer>
+              </S.WishlistContainer>
+            </Link>
           );
         })}
       </S.WishlistWrapper>

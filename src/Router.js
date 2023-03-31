@@ -16,7 +16,7 @@ const Router = () => {
         <Route path="/map" element={<Map />} />
         <Route path="/review" element={<Review />} />
         <Route path="/library" element={<Library />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/wishlist/:id" element={<Wishlist />} />
         <Route path="/placelist" element={<PlaceList />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="*" element={<div>해당 주소는 없는 페이지입니다.</div>} />
