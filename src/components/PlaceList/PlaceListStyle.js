@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { Space, Button } from 'antd';
 import { HeartOutlined } from '@ant-design/icons';
+import variables from '../../styles/variables';
 
 export const SearchContainer = styled(Space)`
-  margin-top: 20px;
+  ${variables.position('fixed', '20px', 'null', 'null', 'null')};
+  background-color: white;
 
   .ant-input:focus {
     border-color: #9cd5c2;
@@ -22,9 +24,8 @@ export const SearchContainer = styled(Space)`
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  ${variables.flex('row', 'center', 'null')}
+  ${variables.position('fixed', '50px', 'null', 'null', 'null')};
   padding: 20px 0;
   gap: 5px;
 
@@ -42,7 +43,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const ListContainer = styled.div`
-  margin-top: 40px;
+  ${variables.widthHeight('100%', 'null')};
   margin-bottom: 95px;
   overflow: scroll;
 
@@ -52,39 +53,31 @@ export const ListContainer = styled.div`
 `;
 
 export const ListTitle = styled.div`
-  position: absolute;
-  top: 125px;
-  left: 32px;
-  font-size: 20px;
-  font-weight: 700;
+  ${variables.position('absolute', '125px', 'null', 'null', '32px')};
+  ${variables.fontStyle('20px', '700')};
 `;
 
 export const ListBox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 150px);
-  gap: 30px;
+  gap: 22px 30px;
 `;
 
 export const ListWrapper = styled.div`
-  font-size: 14px;
-  font-weight: 500;
+  ${variables.fontStyle('16px', '600')};
 `;
 
 export const ListImg = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-bottom: 5px;
+  ${variables.widthHeight('150px', '150px')}
+  margin-bottom: 10px;
   border-radius: 20px;
   object-fit: cover;
 `;
 
 export const Nav = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  ${variables.flex('row', 'space-around', 'center')}
+  ${variables.position('absolute', 'null', 'null', '0', '0')};
+  ${variables.widthHeight('100%', 'null')};
   height: 80px;
   background-color: white;
   border-top: 1px solid lightgray;
