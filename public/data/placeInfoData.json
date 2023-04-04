@@ -1,23 +1,122 @@
-[
-  {
-    "id": 1,
-    "title": "위워크 선릉 2호점",
-    "location": "서울 강남구 테헤란로 427 위워크타워 1층",
-    "lat": 37.50649200893972,
-    "lng": 127.0535525704179
-  },
-  {
-    "id": 2,
-    "title": "현대백화점 무역센터점",
-    "location": "서울 강남구 테헤란로 427 위워크타워 1층",
-    "lat": 37.51317490766483,
-    "lng": 127.05891873454773
-  },
-  {
-    "id": 3,
-    "title": "코엑스 스타필드",
-    "location": "서울 강남구 테헤란로 427 위워크타워 1층",
-    "lat": 37.51317490766483,
-    "lng": 127.05891873454773
-  }
-]
+{
+  "data": [
+    {
+      "placeList": [
+        {
+          "placeId": 1,
+          "placeName": "위워크일까아닐까",
+          "placeTags": [{ "count": 1, "tagId": 1, "tagName": "깨끗한" }],
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 3,
+          "reviewCount": 1,
+          "placeAddress": null,
+          "placeLatitude": null,
+          "placeLongitude": null,
+          "placeThumbnail": null
+        }
+      ]
+    },
+    {
+      "placeList": [
+        {
+          "placeId": 2,
+          "placeName": "내가아직도위워크로보이니",
+          "placeTags": [
+            { "count": 1, "tagId": 1, "tagName": "깨끗한" },
+            { "count": 2, "tagId": 2, "tagName": "향기로운" },
+            { "count": 2, "tagId": 2, "tagName": "향기로운" }
+          ],
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 2.75,
+          "reviewCount": 2,
+          "placeAddress": null,
+          "placeLatitude": null,
+          "placeLongitude": null,
+          "placeThumbnail": null
+        }
+      ]
+    },
+    {
+      "placeList": [
+        {
+          "placeId": 3,
+          "placeName": "위워크는우리집앞에없다",
+          "placeTags": null,
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 0,
+          "reviewCount": 0,
+          "placeAddress": null,
+          "placeLatitude": null,
+          "placeLongitude": null,
+          "placeThumbnail": null
+        }
+      ]
+    },
+    {
+      "placeList": [
+        {
+          "placeId": 4,
+          "placeName": "일하면뭐하니",
+          "placeTags": null,
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 0,
+          "reviewCount": 0,
+          "placeAddress": null,
+          "placeLatitude": null,
+          "placeLongitude": null,
+          "placeThumbnail": null
+        }
+      ]
+    },
+    {
+      "placeList": [
+        {
+          "placeId": 1151939923,
+          "placeName": "강남구치매지원센터 및 공영주차장 개방화장실",
+          "placeTags": null,
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 0,
+          "reviewCount": 0,
+          "placeAddress": "서울 강남구 선릉로108길 27",
+          "placeLatitude": 37.5103044919532,
+          "placeLongitude": 127.046377640946,
+          "placeThumbnail": ""
+        }
+      ]
+    },
+    {
+      "placeList": [
+        {
+          "placeId": 1151939924,
+          "placeName": "채널리저브 개방화장실",
+          "placeTags": null,
+          "placeImages": [
+            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 2, "imageUrl": "image2.sampl" }
+          ],
+          "placeRating": 0,
+          "reviewCount": 0,
+          "placeAddress": "서울 강남구 삼성로 517",
+          "placeLatitude": 37.5079761160075,
+          "placeLongitude": 127.055180032184,
+          "placeThumbnail": ""
+        }
+      ]
+    }
+  ]
+}
