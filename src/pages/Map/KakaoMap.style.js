@@ -74,13 +74,15 @@ export const Map = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  ${variables.widthHeight('100%', '110px')};
-  ${variables.position('absolute', '475px', '0', '0', '0')};
+  ${variables.widthHeight('95%', '110px')};
+  ${variables.position('absolute', '500px', '0', '0', '0')};
   ${variables.flex('null', 'space-between', 'flex-start')};
+  margin: 0 auto;
   background-color: #fff;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   z-index: 10;
+  opacity: 100%;
 `;
 
 export const Info = styled.div`
@@ -91,13 +93,15 @@ export const Info = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  img {
-    width: 110px;
-    height: 110px;
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  background: #d9d9d9;
 
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0px 0px 10px;
   }
 `;
 
@@ -108,7 +112,7 @@ export const NavigationButton = styled.button`
   width: 45px;
   height: 45px;
   left: 332px;
-  top: 660px;
+  top: 680px;
   background: #ffffff;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   border: none;
@@ -123,7 +127,7 @@ export const NavigationButton = styled.button`
 // ---------- ListTap ----------
 
 export const ListContainer = styled.div`
-  ${variables.widthHeight('100%', '15%')}
+  ${variables.widthHeight('100%', '12%')}
   position: absolute;
   bottom: 0;
   border-radius: 20px 20px 0 0;
@@ -159,7 +163,6 @@ export const PlaceCardImg = styled.img`
 export const PlaceInfo = styled.div`
   ${variables.flex('column', 'null', 'null')}
   width: 220px;
-  padding: 18px 0 18px 18px;
 `;
 
 export const PlaceInfoTitle = styled.div`

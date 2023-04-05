@@ -14,15 +14,14 @@ const imageSrc = {
 };
 
 const KakaoMap = () => {
-  const [selectedData, setSelectedData] = useState([]);
-  const [selectTitle, setSelectTitle] = useState('');
-  const [isHeartFilled, setIsHeartFilled] = useState(false);
   const [map, setMap] = useState();
   const [placeList, setPlaceList] = useState(
     placeInfo.map(place => ({ ...place, isActive: false }))
   );
   const activePlace = placeList.find(({ isActive }) => isActive);
   const mapRef = useRef(null);
+  const listContainer = useRef(null);
+  const navigationButton = useRef(null);
 
   const mapOptions = {
     center: activePlace
@@ -34,7 +33,7 @@ const KakaoMap = () => {
   const onClickMarker = id => {
     const next = placeList.map(place => ({
       ...place,
-      isActive: id === place.id,
+      isActive: id === place.placeId,
     }));
     setPlaceList(next);
   };
@@ -52,14 +51,12 @@ const KakaoMap = () => {
     console.log(value);
   };
 
-  const listContainer = useRef(null);
   // MARK: PlaceList 탭 클릭시 위로 올라오는 애니메이션 구현
   const dragListContainer = () => {
     listContainer.current.style.height = '100%';
     listContainer.current.style.transition = 'all 0.3s ease-in-out';
   };
 
-  const navigationButton = useRef(null);
   // TODO: navigation 버튼 클릭시 현위치로 이동
   const navigateToCurrentPosition = () => {
     console.log('navigate to current position');
@@ -100,14 +97,16 @@ const KakaoMap = () => {
         {placeList.map(place => {
           return (
             <Marker
-              key={place.id}
+              key={place.placeId}
               map={map}
               onClick={onClickMarker}
               {...place}
             />
           );
         })}
-        {activePlace && <InfoLayer {...activePlace} />}
+        {(activePlace && <InfoLayer {...activePlace} />) || (
+          <NavigationLayer {...activePlace} />
+        )}
       </S.Map>
 
       <S.NavigationButton
@@ -128,7 +127,7 @@ const KakaoMap = () => {
 
 // Marker
 const Marker = props => {
-  const { map, id, place_name, x, y, isActive, onClick, ...rest } = props;
+  const { map, placeId, placeName, x, y, isActive, onClick, ...rest } = props;
 
   const markerImage = new kakao.maps.MarkerImage(
     isActive ? imageSrc.active : imageSrc.default,
@@ -138,14 +137,14 @@ const Marker = props => {
   const marker = new kakao.maps.Marker({
     map,
     position: new kakao.maps.LatLng(y, x),
-    title: place_name,
+    title: placeName,
     image: markerImage,
   });
 
   kakao.maps.event.addListener(marker, 'click', () => {
     // 추가적으로 핸들링 하고 싶은 함수를 추가
     // 👇 부모로부터 받아온 onClick handler 실행 (없을수도 있으니 optional로 실행)
-    onClick?.(id);
+    onClick?.(placeId);
   });
 
   // infowindow가 있으면 children으로 넘겨주고 아래와 같이 구현하면 됩니다!
@@ -165,26 +164,84 @@ const Marker = props => {
 
 // InfoLayer
 const InfoLayer = props => {
+  const [isHeartFilled, setIsHeartFilled] = useState(false);
+  const [selectedData, setSelectedData] = useState([]);
   const {
-    url,
-    place_name: name,
-    road_address_name: address,
-    place_url: placeUrl,
+    marker,
+    markerImage,
+    placeCard,
+    placeThumbnail: image,
+    navigationButton,
+    placeName: name,
+    placeAddress: address,
   } = props;
-  // 엑스 버튼은 만들어주세요~
+
+  // MARK: 찜하기 하트 버튼 토글
+  // TODO: 컴포넌트 분리하여 각각의 상태 관리 필요 -> 민경님 코드를 Pull 받아서 해결 가능
+  const toggleHeart = () => {
+    setIsHeartFilled(prev => !prev);
+  };
+
+  // MARK: PlaceCard 닫기
+  const closePlaceCard = () => {
+    // if (placeCard.current !== null) {
+    //   placeCard.current.style.opacity = '0';
+    // }
+    // if (navigationButton.current !== null) {
+    //   navigationButton.current.style.transform = 'translate(0, 0)';
+    // }
+    // if (marker.current.length > 1) {
+    //   marker.current.forEach(m => m.setImage(markerImage.current));
+    // }
+    // setSelectedData([]);
+    console.log('closed!');
+  };
 
   return (
-    <S.InfoContainer>
+    <S.InfoContainer ref={placeCard}>
       <S.ImageWrapper>
-        <img src={url} alt={name} />
+        <img
+          src={image}
+          //  src="https://images.pexels.com/photos/5860600/pexels-photo-5860600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="placeImg"
+        />
       </S.ImageWrapper>
       <S.Info>
-        <h5>{name}</h5>
-        {/* <a href={placeUrl} target="_blank" rel="noreferrer">
-          {address}
-        </a> */}
+        <S.PlaceInfo>
+          <S.PlaceCardTitle>{name}</S.PlaceCardTitle>
+          <S.PlaceLocation>{address}</S.PlaceLocation>
+          <S.PlaceInfoContent>
+            <S.PlaceDistance>590m</S.PlaceDistance>
+            <S.PlaceSeperateLine>|</S.PlaceSeperateLine>
+            <S.PlaceReviewNum>리뷰 3개</S.PlaceReviewNum>
+          </S.PlaceInfoContent>
+        </S.PlaceInfo>
+        <S.StyledCloseIcon onClick={closePlaceCard} />
       </S.Info>
+      {isHeartFilled ? (
+        <S.StyledHeartOutlined onClick={toggleHeart} />
+      ) : (
+        <S.StyledHeartTwoTone onClick={toggleHeart} />
+      )}
     </S.InfoContainer>
+  );
+};
+
+// NavigationLayer
+const NavigationLayer = () => {
+  const navigationButton = useRef(null);
+  // TODO: navigation 버튼 클릭시 현위치로 이동
+  const navigateToCurrentPosition = () => {
+    console.log('navigate to current position');
+  };
+
+  return (
+    <S.NavigationButton
+      ref={navigationButton}
+      onClick={navigateToCurrentPosition}
+    >
+      <S.StyledSendIcon />
+    </S.NavigationButton>
   );
 };
 
@@ -453,9 +510,3 @@ export default KakaoMap;
 // };
 
 // export default Map;
-
-// // let center = map.getCenter();
-// // let level = map.getLevel();
-
-// // console.log(center);
-// // console.log(level);
