@@ -66,6 +66,52 @@ export const MapBox = styled.div`
   filter: contrast(70%) brightness(120%);
 `;
 
+export const Map = styled.div`
+  position: relative;
+  ${variables.widthHeight('100%', '100%')};
+  filter: contrast(70%) brightness(120%);
+  background-color: #06f;
+`;
+
+export const InfoContainer = styled.div`
+  ${variables.widthHeight('100%', '110px')}
+  background-color: #fff;
+  box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  ${variables.position('absolute', '595px', '0', '0', '12px')}
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  z-index: 9999;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const ImageWrapper = styled.div`
+  width: 110px;
+  height: 110px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+`;
+
 // ---------- NavigationButton ----------
 
 export const NavigationButton = styled.button`
@@ -95,6 +141,8 @@ export const ListContainer = styled.div`
   background-color: white;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  // FIXME : PlaceCard 테스트용
+  opacity: 0;
 `;
 
 export const ListThumbnailText = styled.h2`
