@@ -44,7 +44,7 @@ const KakaoMap = () => {
     setMap(new kakao.maps.Map(mapRef.current, mapOptions));
   };
 
-  // 아래 mapOptions를 dependencies array에 넣으면 최적화 때문에 useMemo를 사용해줘야 하기 때문에 lint그대로 둠 (처음 보는데 useMemo나오면 너무 어렵잖아요.. 🥹)
+  // 아래 mapOptions를 dependencies array에 넣으면 최적화 때문에 useMemo를 사용해줘야 하기 때문에 lint그대로 둠
   useEffect(initMap, [mapRef, placeList]);
 
   // MARK: 검색 결과 있을시 PlaceCard 보여주기
@@ -63,31 +63,6 @@ const KakaoMap = () => {
   // TODO: navigation 버튼 클릭시 현위치로 이동
   const navigateToCurrentPosition = () => {
     console.log('navigate to current position');
-  };
-
-  const filterCard = [...placeList].filter(
-    list => list.place_name === selectTitle
-  );
-
-  // MARK: 찜하기 하트 버튼 토글
-  // TODO: 컴포넌트 분리하여 각각의 상태 관리 필요 -> 민경님 코드를 Pull 받아서 해결 가능
-  const toggleHeart = () => {
-    setIsHeartFilled(prev => !prev);
-  };
-
-  // MARK: PlaceCard 닫기
-  const closePlaceCard = () => {
-    console.log('close place card');
-    // if (placeCard.current !== null) {
-    //   placeCard.current.style.opacity = '0';
-    // }
-    // if (navigationButton.current !== null) {
-    //   navigationButton.current.style.transform = 'translate(0, 0)';
-    // }
-    // if (marker.current.length > 1) {
-    //   marker.current.forEach(m => m.setImage(markerImage.current));
-    // }
-    // setSelectedData([]);
   };
 
   return (
@@ -197,6 +172,7 @@ const InfoLayer = props => {
     place_url: placeUrl,
   } = props;
   // 엑스 버튼은 만들어주세요~
+
   return (
     <S.InfoContainer>
       <S.ImageWrapper>
@@ -204,9 +180,9 @@ const InfoLayer = props => {
       </S.ImageWrapper>
       <S.Info>
         <h5>{name}</h5>
-        <a href={placeUrl} target="_blank" rel="noreferrer">
+        {/* <a href={placeUrl} target="_blank" rel="noreferrer">
           {address}
-        </a>
+        </a> */}
       </S.Info>
     </S.InfoContainer>
   );

@@ -67,45 +67,34 @@ export const MapBox = styled.div`
 `;
 
 export const Map = styled.div`
-  position: relative;
   ${variables.widthHeight('100%', '100%')};
+  position: relative;
   filter: contrast(70%) brightness(120%);
   background-color: #06f;
 `;
 
 export const InfoContainer = styled.div`
-  ${variables.widthHeight('100%', '110px')}
+  ${variables.widthHeight('100%', '110px')};
+  ${variables.position('absolute', '475px', '0', '0', '0')};
+  ${variables.flex('null', 'space-between', 'flex-start')};
   background-color: #fff;
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  ${variables.position('absolute', '595px', '0', '0', '12px')}
-  /* position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  z-index: 9999;
+  z-index: 10;
 `;
 
 export const Info = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
+  ${variables.flex('column', 'flex-start', 'flex-start')}
+  ${variables.fontStyle('16px', '600')};
+  padding: 20px;
   width: 100%;
 `;
 
 export const ImageWrapper = styled.div`
-  width: 110px;
-  height: 110px;
-
   img {
-    width: 100%;
-    height: 100%;
+    width: 110px;
+    height: 110px;
+
     object-fit: cover;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -142,7 +131,6 @@ export const ListContainer = styled.div`
   box-shadow: 0px 4px 18px 7px rgba(0, 0, 0, 0.1);
   z-index: 1;
   // FIXME : PlaceCard 테스트용
-  opacity: 0;
 `;
 
 export const ListThumbnailText = styled.h2`
