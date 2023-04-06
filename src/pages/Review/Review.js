@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import { Button } from 'antd';
 import { StarFilled, LikeFilled } from '@ant-design/icons';
 import { MoreDetailData } from './MoreDetail';
 import * as S from './ReviewStyle';
 import { useNavigate } from 'react-router-dom';
 import ImgModal from '../Review/ImgModal';
+import Comment from './Comment';
+import exportAtom from '../Atoms';
 
 const Review = () => {
   const navigate = useNavigate();
@@ -12,6 +15,10 @@ const Review = () => {
   const [isOpen, setIsOpen] = useState(() => false);
   const [isHeart, setIsHeart] = useState(true);
   const [isLike, setIsLike] = useState(true);
+  const [detailList, setDetailList] = useState([]);
+  const { commentListState } = exportAtom;
+  const [commentList, setCommentList] = useRecoilState(commentListState);
+  const [loading, setLoading] = useState(true);
 
   const handleFillNav = () => {
     setIsHeart(isHeart => !isHeart);
@@ -28,7 +35,33 @@ const Review = () => {
   const goToWrite = () => {
     navigate('/write-review');
   };
+  useEffect(() => {
+    fetch('http://10.58.52.139:3001/places/1', {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setDetailList(data.result.place[0]);
+        setLoading(false);
+        setCommentList(data.result.place[0].reviewList);
+      });
+  }, [commentList]);
+  if (loading) return <div>loading</div>;
 
+  // useEffect(() => {
+  //   fetch('http://10.58.52.139:3001/places/1', {
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       Authorization: localStorage.getItem('token'),
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // });
+  // console.log(detailList.reviewList);
   return (
     <React.Fragment>
       <S.ReviewNav>
@@ -38,27 +71,33 @@ const Review = () => {
         <S.ReviewMap src="/images/reviewmap.png" alt="map" />
         <S.ReviewTitleWrap>
           <S.TitleWrap>
-            <S.ReviewTitle>청담동 코코건물 1층</S.ReviewTitle>
+            <S.ReviewTitle>{detailList.name}</S.ReviewTitle>
             <S.ShareAltOutlinedStyled />
           </S.TitleWrap>
 
           {isOpen && <ImgModal setIsOpen={setIsOpen} />}
           <S.CopyAddress>
-            <S.TitleAddress>강남구 도산대로 451</S.TitleAddress>
+            <S.TitleAddress>{detailList.address}</S.TitleAddress>
             <S.CopyOutlinedStyled />
           </S.CopyAddress>
 
-          <S.AddressExplain>올리브영을 찾아보세요!</S.AddressExplain>
-          <S.ReviewAssess>★ 4.5 &nbsp;&nbsp;리뷰 3개</S.ReviewAssess>
-
+          <S.AddressExplain>{detailList.description}</S.AddressExplain>
+          <S.ReviewAssess>
+            ★ {Number(detailList.avgRating).toFixed(2)} &nbsp;&nbsp;리뷰{' '}
+            {detailList.countReview}개
+          </S.ReviewAssess>
           <S.PlaceTag>
-            <S.ChosenButton type="button">휴지가 많은</S.ChosenButton>
-            <S.ChosenButton type="button">24시 개방👀</S.ChosenButton>
-            <S.ChosenButton type="button">향기로운</S.ChosenButton>
-            <S.MoreButton type="button">∙∙∙</S.MoreButton>
+            {detailList.mostLikedTags.map(info => (
+              <React.Fragment key={info.tagId}>
+                <S.ChosenButton type="button">
+                  {info.tagName} {info.tagName === '찾기 쉬운' && '👀'}{' '}
+                  {info.tagName === '휴지 많음' && '🧻'}
+                  {info.tagName === '향기로운' && '🎀'}
+                </S.ChosenButton>
+              </React.Fragment>
+            ))}
           </S.PlaceTag>
         </S.ReviewTitleWrap>
-
         <S.SubTitleWrap>
           <S.InfoRequest type="button">정보 수정 요청</S.InfoRequest>
           <S.ToiletImgList>
@@ -66,38 +105,34 @@ const Review = () => {
 
             <S.ReviewToiletWrap>
               <S.ToiletDetailImg
-                src="/images/toilet4.png"
+                src="/images/toilet6.png"
                 alt="toiletImg1"
                 onClick={() => setIsOpen(true)}
               />
-              <S.ToiletDetailImg src="/images/toilet6.png" alt="toiletImg2" />
-              <S.ToiletDetailImg src="/images/toilet4.png" alt="toiletImg3" />
-              <S.ToiletDetailImg src="/images/toilet6.png" alt="toiletImg4" />
+              <S.ToiletDetailImg src="/images/toilet4.png" alt="toiletImg2" />
+              <S.ToiletDetailImg src="/images/toilet6.png" alt="toiletImg3" />
+              <S.ToiletDetailImg src="/images/toilet4.png" alt="toiletImg4" />
+              <S.ToiletDetailImg src="/images/toilet6.png" alt="toiletImg3" />
+              <S.ToiletDetailImg src="/images/toilet4.png" alt="toiletImg4" />
             </S.ReviewToiletWrap>
           </S.ToiletImgList>
           <S.ReviewInfoTitle>기본 정보</S.ReviewInfoTitle>
           <S.InfoContainer>
-            <S.OpenTimeWrap>
-              <S.OpenTimeTitle>개방시간</S.OpenTimeTitle>
-              <S.OpenTime>09:00 ~ 18:00</S.OpenTime>
-            </S.OpenTimeWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>관리기관</S.ManageTitle>
-              <S.ManageName>현대백화점 관리센터</S.ManageName>
-            </S.ManageWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>전화번호</S.ManageTitle>
-              <S.ManageName>0123-3333</S.ManageName>
-            </S.ManageWrap>
-            <S.ManageWrap>
-              <S.ManageTitle>남녀공용 유무</S.ManageTitle>
-              <S.ManageName>남녀 분리</S.ManageName>
-            </S.ManageWrap>
+            {detailList.basicInformation.map(info => {
+              return (
+                <React.Fragment key={info.id}>
+                  <S.ManageWrap>
+                    <S.ManageTitle>{info.title} </S.ManageTitle>
+                    <S.ManageName>{info.content} </S.ManageName>
+                  </S.ManageWrap>
+                </React.Fragment>
+              );
+            })}
             <S.ManageWrap>
               <S.ManageTitle>상세정보 더보기</S.ManageTitle>
-              <S.ManageName onClick={handleOpenMore}>
+              <S.ClickMore onClick={handleOpenMore}>
                 {isMoreOpen ? '▲' : '▼'}
-              </S.ManageName>
+              </S.ClickMore>
             </S.ManageWrap>
           </S.InfoContainer>
 
@@ -121,42 +156,19 @@ const Review = () => {
           )}
           <S.InfoMoreDate>마지막 업데이트 날짜 : 23.01.23</S.InfoMoreDate>
           <S.ViewReview>
-            <S.ViewReviewNumber>리뷰 3개</S.ViewReviewNumber>
-            <S.ViewReviewWrap>
-              <S.ViewReviewDate>2023.03.12</S.ViewReviewDate>
-              <S.ViewReviewName>♀ 👩🏻</S.ViewReviewName>
-              <S.ViewReviewAssess>
-                <StarFilled style={{ color: '#9CD5C2' }} />
-                <StarFilled style={{ color: '#9CD5C2' }} />
-                <StarFilled style={{ color: '#9CD5C2' }} />
-                <StarFilled style={{ color: '#9CD5C2' }} />
-                <StarFilled style={{ color: 'lightgray' }} />
-              </S.ViewReviewAssess>
-              <S.ReviewBtnContainer>
-                <S.StyledButton type="default" shape="round" color="lightgray">
-                  24시 개방
-                </S.StyledButton>
-                <Button type="default" shape="round">
-                  향기로운
-                </Button>
-                <S.ChosenButtonStyled type="button">
-                  휴지가 많은
-                </S.ChosenButtonStyled>
-              </S.ReviewBtnContainer>
-              <S.ViewReviewMent>
-                생각보다 쓸만해요 근데 휴지가 별로 많지 않아요🙁
-              </S.ViewReviewMent>
-              <S.LikeReview onClick={handleLikeFill}>
-                {isLike ? (
-                  <S.StyledLikeOutlined />
-                ) : (
-                  <LikeFilled style={{ color: '#9CD5C2' }} />
-                )}
-                <S.LikeReviewNumber>30</S.LikeReviewNumber>
-              </S.LikeReview>
-            </S.ViewReviewWrap>
+            <S.ViewReviewNumber>
+              리뷰 {detailList?.countReview}개
+            </S.ViewReviewNumber>
+
+            {/* Comment Component */}
+            {commentList.map(item => (
+              <S.ViewReviewWrap key={item.id}>
+                <Comment item={item} key={item.id} />
+              </S.ViewReviewWrap>
+            ))}
           </S.ViewReview>
         </S.SubTitleWrap>
+        <S.NavHeight>nav</S.NavHeight>
       </S.Scroll>
       <S.Nav>
         <S.LikeNav onClick={handleFillNav}>
