@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Icon from '@ant-design/icons';
+import Icon, { HeartOutlined } from '@ant-design/icons';
+import variables from '../../styles/variables';
 
 export const HeartSvg = () => (
   <svg
@@ -23,17 +24,6 @@ export const HeartSvg = () => (
 );
 
 const HeartIcon = props => <Icon component={HeartSvg} {...props} />;
-
-export const Nav = styled.nav`
-  position: absolute;
-  left: 0px;
-  top: 763px;
-  width: 390px;
-  height: 81px;
-  border-top: 1px solid #d9d9d9;
-  background: #ffffff;
-`;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -43,8 +33,9 @@ export const Wrapper = styled.div`
 `;
 
 export const LeftArrowWrapper = styled.div`
-  margin-top: 22px;
-  margin-right: 326px;
+  margin-top: 38px;
+  margin-right: 310px;
+  color: black;
 `;
 
 export const RepresentativeTitle = styled.p`
@@ -64,6 +55,8 @@ export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -7px;
+  padding-bottom: 20px;
 `;
 
 export const MapWrapper = styled.div`
@@ -95,23 +88,35 @@ export const StyledHeartTwoTone = styled(HeartIcon)`
 export const Place = styled.p`
   margin-top: 22px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 26px;
 `;
 
 export const DetailWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin-top: 16px;
+  margin-top: 28px;
 `;
 
 export const Rating = styled.p`
   font-size: 20px;
-  font-size: 15px;
+  font-size: 18px;
 `;
 
 export const Review = styled.p`
   margin-left: 17px;
   color: #a8a8a8;
-  font-size: 15px;
-}
+  font-size: 18px;
+`;
+
+export const Nav = styled.div`
+  ${variables.flex('row', 'space-around', 'center')}
+  ${variables.position('absolute', 'null', 'null', '0', '0')};
+  ${variables.widthHeight('100%', 'null')};
+  height: 80px;
+  background-color: white;
+  border-top: 1px solid lightgray;
+`;
+
+export const HeartOutlinedStyled = styled(HeartOutlined)`
+  margin: 0 -80px;
 `;

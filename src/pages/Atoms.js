@@ -34,6 +34,10 @@ const selectedTagList = atom({
   key: 'tags',
   default: [],
 });
+const heartState = atom({
+  key: 'isHeart',
+  default: true,
+});
 
 const exportAtom = {
   countState,
@@ -43,6 +47,7 @@ const exportAtom = {
   gradeState,
   selectedTag,
   selectedTagList,
+  heartState,
 };
 
 export default exportAtom;
