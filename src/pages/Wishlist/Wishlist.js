@@ -1,48 +1,111 @@
-import React from 'react';
-import WISHLISTDATA from './WISHLISTDATA';
+import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import * as S from './Wishlist.style';
+import { Link, useParams } from 'react-router-dom';
 import {
   LeftOutlined,
   SearchOutlined,
   HeartOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import WishListMap from './WishListMap';
+import exportAtom from '../../pages/Atoms';
 
 const Wishlist = () => {
+  const { heartState } = exportAtom;
+
+  const [isHeart, setIsHeart] = useRecoilState(heartState);
+
+  // const toggleHeart = () => {
+  //   setIsHeart(prev => !prev);
+  // };
+
+  const params = useParams();
+
+  const userId = params.id;
+
+  const [wishListData, setWishListData] = useState([]);
+
+  const [placeName, setPlaceName] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://10.58.52.70:3001/users?libraryId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setWishListData(data.data[0].places);
+        setPlaceName(data.data);
+      });
+  }, [userId]);
+
+  function deleteWishList(placeId) {
+    console.log(123);
+    fetch(`http://10.58.52.70:3001/users/libraries/places/${placeId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(
+        data => {
+          console.log(data);
+          if (data.message) {
+            const newArr = [...wishListData];
+            setWishListData(newArr.filter(list => list.placeId !== placeId));
+          }
+        },
+        [wishListData]
+      );
+  }
+
   return (
     <React.Fragment>
-      <S.LeftArrowWrapper>
-        <LeftOutlined style={{ fontSize: '26px' }} />
-      </S.LeftArrowWrapper>
-      <S.TitleWrapper>
-        <S.RepresentativeTitle>강남역 2호선</S.RepresentativeTitle>
-        <S.SubTitle>자주가는 장소를 등록해서 편하게 살펴보세요.</S.SubTitle>
-      </S.TitleWrapper>
+      <Link to="/library" style={{ textDecoration: 'none' }}>
+        <S.LeftArrowWrapper>
+          <LeftOutlined style={{ fontSize: '26px' }} />
+        </S.LeftArrowWrapper>
+      </Link>
+
+      {placeName.map((ele, id) => {
+        return (
+          <S.TitleWrapper key={ele.libraryId}>
+            <S.RepresentativeTitle>{ele.libraryName}</S.RepresentativeTitle>
+            <S.SubTitle>자주가는 장소를 등록해서 편하게 살펴보세요.</S.SubTitle>
+          </S.TitleWrapper>
+        );
+      })}
+
       <S.MapWrapper>
-        {WISHLISTDATA.map(({ id, src, place, review, errMsg, rating }) => {
+        {wishListData.map(info => {
           return (
-            <React.Fragment key={id}>
-              <S.ImgHeartWrapper>
-                <S.Img src={src} />
-                <S.StyledHeartTwoTone />
-              </S.ImgHeartWrapper>
-              <S.DetailReviewPlaceContain>
-                <S.Place style={{ fontWeight: '700' }}>{place}</S.Place>
-                <S.DetailWrapper>
-                  <S.Rating>★ {rating}</S.Rating>
-                  <S.Review>{`리뷰 ${review}개`}</S.Review>
-                </S.DetailWrapper>
-              </S.DetailReviewPlaceContain>
-            </React.Fragment>
+            <WishListMap
+              key={info.placeId}
+              placeName={info.placeName}
+              reviewRating={info.reviewRating}
+              reviewCount={info.reviewCount}
+              deleteWishList={deleteWishList}
+              placeId={info.placeId}
+              // toggleHeart={toggleHeart}
+              placeImage={info.placeImage}
+              wishListData={wishListData}
+            />
           );
         })}
       </S.MapWrapper>
+
       <S.Nav>
-        <S.Wrapper>
-          <SearchOutlined style={{ color: '#C5C5C5', fontSize: '24px' }} />
-          <HeartOutlined style={{ color: '#C5C5C5', fontSize: '24px' }} />
-          <UserOutlined style={{ color: '#C5C5C5', fontSize: '24px' }} />
-        </S.Wrapper>
+        <SearchOutlined style={{ fontSize: '30px', color: '#9CD5C2' }} />
+        <S.HeartOutlinedStyled
+          style={{ fontSize: '30px', color: 'lightgray' }}
+        />
+        <UserOutlined style={{ fontSize: '30px', color: 'lightgray' }} />
       </S.Nav>
     </React.Fragment>
   );

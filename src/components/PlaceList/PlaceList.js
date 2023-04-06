@@ -1,17 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Input, Button } from 'antd';
-import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import App from '../Modal/App';
+import { SearchOutlined, UserOutlined, HeartTwoTone } from '@ant-design/icons';
 import styled from 'styled-components';
 import * as S from './PlaceListStyle';
+import PlaceModal from './PlaceModal';
 
 const { Search } = Input;
 const onSearch = value => console.log(value);
 
-const App = () => {
+const PlaceList = ({ type }) => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const lastItemRef = useRef();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [getModalState, setModalState] = useState(false);
+
+  const showModal = () => {
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     fetchData();
@@ -66,13 +74,20 @@ const App = () => {
 
   return (
     <AppContainer>
+      {modalOpen && <App setModalOpen={setModalOpen} />}
+      {getModalState && <PlaceModal setModalState={setModalState} />}
       <S.SearchContainer direction="vertical">
         <Search
           placeholder="검색어를 입력해주세요."
           onSearch={onSearch}
           style={{
-            width: 330,
+            width: 290,
           }}
+        />
+        <S.FilterIcon
+          src="/images/filter.png"
+          alt="filter"
+          onClick={() => setModalState(true)}
         />
       </S.SearchContainer>
 
@@ -97,10 +112,12 @@ const App = () => {
           {items.map((item, index) => {
             return (
               <S.ListWrapper key={`item_${index}`}>
+                <S.StyledHeartTwoTone onClick={showModal} />
                 <S.ListImg
                   src={item.placeList[0].placeThumbnail}
                   alt="toiletImage"
                 />
+
                 {item.placeList[0].placeName}
               </S.ListWrapper>
             );
@@ -120,7 +137,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default PlaceList;
 
 const AppContainer = styled.div`
   margin-top: 160px;
