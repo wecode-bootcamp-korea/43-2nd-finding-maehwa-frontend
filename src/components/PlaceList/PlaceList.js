@@ -29,7 +29,14 @@ const PlaceList = ({ type }) => {
     const tags = 0;
     const offset = page;
     fetch(
-      `http://10.58.52.70:3001/places/visitor?tags=${tags}&offset=${offset}`
+      `http://10.58.52.70:3001/places/visitor?tags=${tags}&offset=${offset}`,
+      {
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json;charset=utf-8',
+          Authorization: localStorage.getItem('token'),
+        },
+      }
     )
       .then(response => response.json())
       .then(data => {

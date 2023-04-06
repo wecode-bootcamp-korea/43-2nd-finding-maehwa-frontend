@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { Rate } from 'antd';
 
-export const ViewReviewWrap = styled.div`
+export const ViewReviewWraps = styled.div`
   width: 340px;
   height: 100%;
   border-radius: 10px;
   background-color: white;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: -20px;
   margin-bottom: 20px;
 `;
 
@@ -74,10 +74,10 @@ export const ReviewSelectedTag = styled.div`
   border: 1px solid #9cd5c2;
   border-radius: 20px;
   color: #9cd5c2;
-  padding: 8px 9px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
 `;
 
 export const ViewReviewMent = styled.div`

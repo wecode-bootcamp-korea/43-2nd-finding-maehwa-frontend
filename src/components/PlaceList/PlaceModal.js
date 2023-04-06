@@ -24,7 +24,7 @@ const PlaceModal = ({ setModalState }) => {
     // 선택된 태그들의 정보를 상태값으로 업데이트
     setSelectTag(updatedTags);
     setSelectedTags(selectedTags);
-    // console.log(selectedTags);
+    console.log(selectedTags);
   };
 
   const goToFilter = () => {
