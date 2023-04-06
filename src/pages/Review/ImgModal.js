@@ -9,13 +9,13 @@ const ImgModal = ({ setIsOpen }) => {
     slideRef.current.style.transform = `translateX(${-300 * curSlide}px)`;
   }, [curSlide]);
 
-  const movePrev = () => {
-    setCurSlide(curSlide => curSlide - 1);
-  };
+  // const movePrev = () => {
+  //   setCurSlide(curSlide => curSlide - 1);
+  // };
 
-  const moveNext = () => {
-    setCurSlide(curSlide => curSlide + 1);
-  };
+  // const moveNext = () => {
+  //   setCurSlide(curSlide => curSlide + 1);
+  // };
 
   return (
     <S.ImgModal>

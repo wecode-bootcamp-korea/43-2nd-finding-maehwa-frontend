@@ -1,26 +1,17 @@
 import React, { useState } from 'react';
 import * as S from './CommentStyle';
-import { Carousel } from 'antd';
 import LikeComment from './LikeComment';
 import { useRecoilState } from 'recoil';
 import exportAtom from '../Atoms';
-import { ExclamationCircleFilled } from '@ant-design/icons';
-import { Button, Modal, Space } from 'antd';
-const { confirm } = Modal;
+import { useEffect } from 'react';
 
 const Comment = ({ item }) => {
-  const { commentListState, gradeState, selectedTag, selectedTagList } =
-    exportAtom;
-
+  const { commentListState, gradeState, selectedTagList } = exportAtom;
+  const [selectedTags, setSelectedTags] = useRecoilState(selectedTagList);
   const [commentList, setCommentList] = useRecoilState(commentListState);
   const [grade] = useRecoilState(gradeState);
-  const [selectTag, setSelectTag] = useRecoilState(selectedTag);
-  const [selectedTags, setSelectedTags] = useRecoilState(selectedTagList);
-  const [numberComments, setNumberComments] = useState(0);
+
   const [isLike, setIsLike] = useState(false);
-
-  // const [numberlike, setNumberLike] = useState(0);
-
   const handleLikeReview = () => {
     setIsLike(isLike => !isLike);
   };
@@ -32,52 +23,51 @@ const Comment = ({ item }) => {
       })
     );
   };
-
-  const showConfirm = () => {
-    confirm({
-      title: '작성하신 리뷰를 삭제하시겠습니까?',
-      icon: <ExclamationCircleFilled />,
-
-      onOk() {
-        console.log('네');
-      },
-      onCancel() {
-        console.log('아니오');
-      },
-    });
-  };
-
-  console.log(selectedTags);
-
+  // console.log(selectedTags);
   return (
-    <S.ViewReviewWrap>
+    <S.ViewReviewWraps>
       <S.ViewReviewDate>23.03.12</S.ViewReviewDate>
-      <S.ViewReviewName>{item.id}</S.ViewReviewName>
+      <S.ViewReviewName>익명</S.ViewReviewName>
       <S.UserInfo>
         <S.ViewReviewAssess>
-          <S.RateStyled allowHalf disabled defaultValue={grade} />
+          <S.RateStyled allowHalf disabled defaultValue={item.rating} />
         </S.ViewReviewAssess>
 
         <S.ModifyInfo>
           <S.ModifyReview src="/images/pencil.png" />
           <S.DeleteReview
-            onClick={showConfirm}
+            onClick={deleteComment}
             type="button"
             src="/images/trash.png"
           />
         </S.ModifyInfo>
       </S.UserInfo>
       <S.SelectedTagContainer>
-        {selectedTags.map((item, id) => (
+        {item &&
+          item.tagList.map((info, id) => (
+            <S.ReviewSelectedTag type="button" key={id}>
+              {info.tagName}{' '}
+              {(info.tagName === '휴지 많음' ||
+                info.tagName === '휴지 적음' ||
+                info.tagName === '휴지 보통') &&
+                '🧻'}{' '}
+              {info.tagName === '향기로운' && '🎀'}{' '}
+              {info.tagName === '음악이 나오는' && '🎵'}
+              {info.tagName === '인테리어가 좋은' && '🖼'}
+              {info.tagName === '콘센트가 있는' && '🐽'}
+              {info.tagName === '찾기 쉬운' && '👀'}
+            </S.ReviewSelectedTag>
+          ))}
+        {/* {selectedTags.map((item, id) => (
           <S.ReviewSelectedTag type="button" key={id}>
             {item.tagName}
           </S.ReviewSelectedTag>
-        ))}
+        ))} */}
       </S.SelectedTagContainer>
-      <S.ViewReviewMent>{item.value}</S.ViewReviewMent>
+      <S.ViewReviewMent>{item.comment}</S.ViewReviewMent>
 
       <LikeComment isLike={isLike} handleLikeReview={handleLikeReview} />
-    </S.ViewReviewWrap>
+    </S.ViewReviewWraps>
   );
 };
 

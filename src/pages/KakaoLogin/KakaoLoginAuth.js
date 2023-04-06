@@ -23,7 +23,7 @@ const KakaoLoginAuth = () => {
         if (data.access_token) {
           // localStorage.setItem('token', data.access_token);
           // navigate('/map');
-          fetch('http://10.58.52.145:3001/users/kakao', {
+          fetch('http://10.58.52.70:3001/users/kakao', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json;charset=utf-8',
