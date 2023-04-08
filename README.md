@@ -11,3 +11,11 @@
 - Product Manager: 장지아(F)
 - Project Manager: 문선정(B)
 - Teammates: 김민경(F), 김준영(F), 장지원(B)
+
+<br />
+
+### 배경
+### 서비스 소개
+### 기능
+### 기술 스택
+### TO DO
