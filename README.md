@@ -48,10 +48,10 @@
 
 <img alt="Review" src="https://user-images.githubusercontent.com/71865277/230769549-10ed86f4-3b4e-4941-94db-3b4bf4bb6c4c.gif" width=300 text-align="center" />
 
-💚 나만의 장소 찜하기
+## 💚 나만의 장소 찜하기 ()
 
 - 플레이스 리스트에서 하트를 눌러 찜을 해제할 수 있어요.
-- 
+- 라이브러리에서 내가 찜할 장소들을 모아볼 수 있어요. (이런 톤앤매너 맞나용 ?)
 
 <br />
 
