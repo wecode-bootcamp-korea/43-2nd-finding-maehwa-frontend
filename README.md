@@ -50,6 +50,8 @@
 
 나만의 장소 찜하기
 
+플레이스 리스트에서 하트를 눌러 찜을 해제 
+
 <br />
 
 <img alt="Wishlist" src="https://user-images.githubusercontent.com/71865277/230769557-5381ae25-bf7f-407b-bfdd-514247f9fbc5.gif" width=300 text-align="center" />
