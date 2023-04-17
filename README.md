@@ -62,6 +62,8 @@
 
 ### 기술 스택
 
+//우선 넣어 봤어용... 바꾸셔도 돼요!(완전히!!)
+
 |JavaScript|React|Styled component|esLint|Prettier|
 | :--: | :--: | :--: | :--: | :--: |
 | <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" />  | <img src="https://miro.medium.com/v2/resize:fit:480/1*Iohnw2aOQ5EBghVoqKA7VA.png" alt="icon" width="55" height="55" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
