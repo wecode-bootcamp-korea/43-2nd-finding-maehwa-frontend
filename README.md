@@ -1,30 +1,22 @@
 # 매화를 찾아서 🌸
 
-<br />
-
 ### 내 주변 화장실을 찾고 리뷰를 남겨보세요!
 
-<br />
-
-### 팀원
-
-- Product Manager: 장지아(F)
-- Project Manager: 문선정(B)
-- Teammates: 김민경(F), 김준영(F), 장지원(B)
+<img src="https://user-images.githubusercontent.com/71865277/233821186-9d6f7f45-7230-4681-9f01-b1d79f48c9af.png" width=800 text-align="center" alt="background-image" />
 
 <br />
 
 ### 배경
 
-다급한 순간.. 깔끔하면서도 휴지가 있는 화장실을 찾기 어렵다면?
+<img src="https://user-images.githubusercontent.com/71865277/233821054-72bcb54a-e16e-4c9f-8563-36e358ca4eff.png" width=800 text-align="center" alt="background-image" />
 
 <br />
 
-지도에서 내 주변 화장실을 발견하고, 필터로 원하는 곳을 찾아서 저장해보세요!
+<img src="https://user-images.githubusercontent.com/71865277/233821101-d470c286-19a3-4637-97ed-98479785a795.png" width=800 text-align="center" alt="background-image" />
 
 <br />
 
-### 서비스 소개
+<img src="https://user-images.githubusercontent.com/71865277/233821143-92c46aa1-baee-468f-ad1d-e98804b22978.png" width=800 text-align="center" alt="background-image" />
 
 <br />
 
@@ -74,6 +66,8 @@
 
 <br />
 
-### TO DO
+### 팀원
 
-<br />
+- Product Manager: 장지아(F)
+- Project Manager: 문선정(B)
+- Teammates: 김민경(F), 김준영(F), 장지원(B)
