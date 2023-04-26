@@ -6,7 +6,7 @@
 
 <br />
 
-### 배경
+### 기획 배경
 
 <img src="https://user-images.githubusercontent.com/71865277/233821054-72bcb54a-e16e-4c9f-8563-36e358ca4eff.png" width=800 text-align="center" alt="background-image" />
 
