@@ -40,7 +40,10 @@
 
 <img alt="Map - 2" src="https://user-images.githubusercontent.com/71865277/230769547-307226d5-0209-4304-9d92-c47ec18ee6e7.gif" width=300 text-align="center" />
 
-소중한 리뷰를 나눠요 
+### 💚 소중한 리뷰 남기기
+
+- 앞으로 해당 장소를 사용할 사람을 위해 리뷰를 남기고 별점과 태그를 추가해요.
+- 장소에 대한 상세 정보와 리뷰를 합께 확인할 수 있어요.
 
 <br />
 
