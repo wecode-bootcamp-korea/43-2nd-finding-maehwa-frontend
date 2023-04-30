@@ -31,15 +31,15 @@
 
 <img alt="KakaoLogin" src="https://user-images.githubusercontent.com/71865277/230769523-ad0bf7df-5953-4760-945e-9b40c4280b8f.gif" width=300 text-align="center" />
 
-지도로 한 눈에 보기
+### 💚 태그로 장소 필터링하기
+- 원하는 태그를 선택하면 나에게 맞는 맞춤 장소를 알려줘요.
+- 페이지 이동 없이 계속해서 장소들을 볼 수 있어요.
 
 <br />
 
 <img alt="PlaceList" src="https://user-images.githubusercontent.com/71865277/230769532-623ecb9b-224e-45ea-9a22-44f13be85bde.gif" width=300 text-align="center" />
 
-### 💚 태그로 장소 필터링하기
-- 원하는 태그를 선택하면 나에게 맞는 맞춤 장소를 알려줘요.
-- 페이지 이동 없이 계속해서 장소들을 볼 수 있어요.
+### 💚 지도로 한 눈에 보기
 
 <br />
 
