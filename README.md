@@ -6,20 +6,6 @@
 
 <br />
 
-### 기획 배경
-
-<img src="https://user-images.githubusercontent.com/71865277/233821054-72bcb54a-e16e-4c9f-8563-36e358ca4eff.png" width=800 text-align="center" alt="background-image" />
-
-<br />
-
-<img src="https://user-images.githubusercontent.com/71865277/233821101-d470c286-19a3-4637-97ed-98479785a795.png" width=800 text-align="center" alt="background-image" />
-
-<br />
-
-<img src="https://user-images.githubusercontent.com/71865277/233821143-92c46aa1-baee-468f-ad1d-e98804b22978.png" width=800 text-align="center" alt="background-image" />
-
-<br />
-
 ### 기능
 
 ### 💚 간편한 소셜로그인
