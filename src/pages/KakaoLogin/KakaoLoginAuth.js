@@ -21,8 +21,6 @@ const KakaoLoginAuth = () => {
       .then(data => {
         console.log(`data.access_token: ${data.access_token}`);
         if (data.access_token) {
-          // localStorage.setItem('token', data.access_token);
-          // navigate('/map');
           fetch('http://10.58.52.70:3001/users/kakao', {
             method: 'POST',
             headers: {
@@ -39,12 +37,12 @@ const KakaoLoginAuth = () => {
               } else {
                 alert('로그인에 실패했습니다.');
                 localStorage.removeItem('token', list.accessToken);
-                navigate('/kakao-login');
+                navigate('/');
               }
             });
         } else {
           alert('로그인에 실패했습니다.');
-          navigate('/kakao-login');
+          navigate('/');
         }
       });
   }, []);

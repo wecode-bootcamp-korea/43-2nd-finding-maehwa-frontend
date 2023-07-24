@@ -4,12 +4,9 @@
       "placeList": [
         {
           "placeId": 1,
-          "placeName": "위워크일까아닐까",
-          "placeTags": [{ "count": 1, "tagId": 1, "tagName": "깨끗한" }],
-          "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
-            { "imageId": 2, "imageUrl": "image2.sampl" }
-          ],
+          "placeName": "채널리저브 개방화장실",
+          "placeTags": { "count": 1, "tagId": 1, "tagName": "깨끗한" },
+          "placeImages": [{ "imageId": 1, "imageUrl": "/images/toilet1.png" }],
           "placeRating": 3,
           "reviewCount": 1,
           "placeAddress": null,
@@ -23,14 +20,14 @@
       "placeList": [
         {
           "placeId": 2,
-          "placeName": "내가아직도위워크로보이니",
+          "placeName": "위워크타워 선릉점",
           "placeTags": [
             { "count": 1, "tagId": 1, "tagName": "깨끗한" },
             { "count": 2, "tagId": 2, "tagName": "향기로운" },
             { "count": 2, "tagId": 2, "tagName": "향기로운" }
           ],
           "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 1, "imageUrl": "/images/toilet2.png" },
             { "imageId": 2, "imageUrl": "image2.sampl" }
           ],
           "placeRating": 2.75,
@@ -46,10 +43,10 @@
       "placeList": [
         {
           "placeId": 3,
-          "placeName": "위워크는우리집앞에없다",
+          "placeName": "현대백화점 1층",
           "placeTags": null,
           "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 1, "imageUrl": "/images/toilet3.png" },
             { "imageId": 2, "imageUrl": "image2.sampl" }
           ],
           "placeRating": 0,
@@ -65,10 +62,10 @@
       "placeList": [
         {
           "placeId": 4,
-          "placeName": "일하면뭐하니",
+          "placeName": "포스코타워 2층",
           "placeTags": null,
           "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 1, "imageUrl": "/images/toilet4.png" },
             { "imageId": 2, "imageUrl": "image2.sampl" }
           ],
           "placeRating": 0,
@@ -84,10 +81,10 @@
       "placeList": [
         {
           "placeId": 1151939923,
-          "placeName": "강남구치매지원센터 및 공영주차장 개방화장실",
+          "placeName": "강남구치매지원센터 개방화장실",
           "placeTags": null,
           "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 1, "imageUrl": "/images/toilet1.png" },
             { "imageId": 2, "imageUrl": "image2.sampl" }
           ],
           "placeRating": 0,
@@ -103,10 +100,10 @@
       "placeList": [
         {
           "placeId": 1151939924,
-          "placeName": "채널리저브 개방화장실",
+          "placeName": "강남구 공영주차장",
           "placeTags": null,
           "placeImages": [
-            { "imageId": 1, "imageUrl": "image1.sampl" },
+            { "imageId": 1, "imageUrl": "/images/toilet2.png" },
             { "imageId": 2, "imageUrl": "image2.sampl" }
           ],
           "placeRating": 0,

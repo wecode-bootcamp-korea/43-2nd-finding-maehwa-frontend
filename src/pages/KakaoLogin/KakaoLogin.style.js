@@ -1,26 +1,33 @@
 import styled, { keyframes } from 'styled-components';
+import variables from '../../styles/variables';
 
 export const LoginContainer = styled.div`
+  ${variables.absoluteCenter}
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #252525;
 `;
 
 export const SplashImg = styled.img`
-  width: 100%;
-  padding: 100px 30px 0 30px;
+  ${variables.absoluteCenter}
+  width: 70%;
+  transform: translate(-50%, -80%);
 `;
 
 export const KakaoLoginBtn = styled.img`
+  ${variables.absoluteCenter}
   width: 100%;
   padding: 0 50px;
+  transform: translate(-50%, 250%);
 `;
 
 export const LookAroundBtn = styled.div`
+  ${variables.absoluteCenter}
   padding: 20px;
   font-size: 12px;
   color: white;
   text-align: center;
+  transform: translate(-50%, 300%);
 `;
 
 export const rotation = keyframes`

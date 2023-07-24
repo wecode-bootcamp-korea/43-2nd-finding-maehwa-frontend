@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Input, Button } from 'antd';
 import App from '../Modal/App';
-import { SearchOutlined, UserOutlined, HeartTwoTone } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import * as S from './PlaceListStyle';
 import PlaceModal from './PlaceModal';
@@ -25,19 +25,19 @@ const PlaceList = ({ type }) => {
     fetchData();
   }, []);
 
+  const tags = 0;
+  const offset = page;
+  const fetchUrl = `http://10.58.52.70:3001/places/visitor?tags=${tags}&offset=${offset}`;
+  const mockUrl = '/data/placeInfoData.json';
+
   const fetchData = () => {
-    const tags = 0;
-    const offset = page;
-    fetch(
-      `http://10.58.52.70:3001/places/visitor?tags=${tags}&offset=${offset}`,
-      {
-        method: 'GET',
-        header: {
-          'Content-Type': 'application/json;charset=utf-8',
-          Authorization: localStorage.getItem('token'),
-        },
-      }
-    )
+    fetch(mockUrl, {
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: localStorage.getItem('token'),
+      },
+    })
       .then(response => response.json())
       .then(data => {
         setItems(data.data);
@@ -121,7 +121,7 @@ const PlaceList = ({ type }) => {
               <S.ListWrapper key={`item_${index}`}>
                 <S.StyledHeartTwoTone onClick={showModal} />
                 <S.ListImg
-                  src={item.placeList[0].placeThumbnail}
+                  src={item.placeList[0].placeImages[0].imageUrl}
                   alt="toiletImage"
                 />
 
