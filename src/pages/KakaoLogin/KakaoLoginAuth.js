@@ -19,7 +19,6 @@ const KakaoLoginAuth = () => {
     )
       .then(res => res.json())
       .then(data => {
-        console.log(`data.access_token: ${data.access_token}`);
         if (data.access_token) {
           fetch('http://10.58.52.70:3001/users/kakao', {
             method: 'POST',
@@ -30,7 +29,6 @@ const KakaoLoginAuth = () => {
           })
             .then(res => res.json())
             .then(list => {
-              console.log(`list.accessToken: ${list.accessToken}`);
               if (list.accessToken) {
                 localStorage.setItem('token', list.accessToken);
                 navigate('/placelist');
